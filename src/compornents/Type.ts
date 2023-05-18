@@ -10,11 +10,6 @@ export type Event = {
   };
 };
 
-export type Props = {
-  textRef?: React.MutableRefObject<HTMLInputElement>;
-  onClick?: () => void;
-};
-
 export type Todo = {
   id: number;
   title: string;

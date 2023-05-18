@@ -1,5 +1,4 @@
 import React, { FC, useRef } from "react";
-import { Event } from "./Type";
 import { TodoList } from "./TodoList";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
