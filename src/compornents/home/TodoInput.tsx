@@ -1,17 +1,23 @@
 import React, { ChangeEvent, useContext, useRef } from "react";
 import { TextContext, TodosContext, RadioContext } from "./TodoList";
-import styles from "./CssModules.module.scss";
-import { Todo } from "./Type";
+import styles from "./todolist.module.scss";
+import { Todo } from "../../pages/Home";
 
-export const TodoInput = () => {
+type status = "作業中" | "完了";
+
+type Props = {
+  WORK_ON_PROGRESS: status;
+};
+
+export const TodoInput = (props: Props) => {
   const { text, setText } = useContext(TextContext);
   const { todos, setTodos } = useContext(TodosContext);
   const { radioCategoly } = useContext(RadioContext);
+  const { WORK_ON_PROGRESS } = props;
 
   const date = new Date();
   const createdDate: number = date.getTime();
   const textRef = useRef<HTMLInputElement>(null!);
-  const WORK_ON_PROGRESS = "作業中";
 
   const addTodo = (): void => {
     if (text === "") return;

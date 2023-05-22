@@ -1,13 +1,17 @@
 import React, { ChangeEvent, useContext } from "react";
-import styles from "./CssModules.module.scss";
+import styles from "./todolist.module.scss";
 import { RadioContext } from "./TodoList";
 
-export const RadioBtn = () => {
-  const { radioCategoly, setRadioCategoly } = useContext(RadioContext);
+type Props = {
+  URGENT: string;
+  MORNING: string;
+  AFTERNOON: string;
+};
 
-  const URGENT = "急ぎ";
-  const MORNING = "午前";
-  const AFTERNOON = "午後";
+export const RadioBtn = (props: Props) => {
+  const { radioCategoly, setRadioCategoly } = useContext(RadioContext);
+  const { URGENT, MORNING, AFTERNOON } = props;
+
   const categolies = [URGENT, MORNING, AFTERNOON];
 
   const onChangeRadioBtn = (e: ChangeEvent<HTMLInputElement>): void => {

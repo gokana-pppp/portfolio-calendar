@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  box-sizing: border-box;
+}
+
+.calendar {
+  width: 65%;
+}
+
+.todo_list {
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}

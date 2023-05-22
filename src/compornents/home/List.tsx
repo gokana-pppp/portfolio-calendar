@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import styles from "./CssModules.module.scss";
-import { Todo } from "./Type";
+import styles from "./todolist.module.scss";
+import { Todo } from "../../pages/Home";
 import { TodosContext } from "./TodoList";
 
 type Props = {
