@@ -1,8 +1,7 @@
 import React, { ChangeEvent, useContext, useRef } from "react";
 import { TextContext, TodosContext, RadioContext } from "./TodoList";
 import styles from "./todolist.module.scss";
-import { Todo } from "../../pages/Home";
-import { WORK_ON_PROGRESS } from "../../pages/Home";
+import { Todo, WORK_ON_PROGRESS } from "../../pages/Home";
 
 export const TodoInput = () => {
   const { text, setText } = useContext(TextContext);

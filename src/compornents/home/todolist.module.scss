@@ -47,11 +47,17 @@
   width: 100%;
   margin: auto;
   font-size: 15px;
-  .ta_check {
-    margin: 0 40px 0 7px;
+  .ta_td {
+    width: 200px;
   }
   .ta_button {
     margin: 0 5px 0 0;
     font-size: 7px;
   }
+}
+
+// チェックボタンがチェック有になると以下のclassNameが付与される
+.isChecked_label {
+  text-decoration: line-through;
+  color: gray;
 }

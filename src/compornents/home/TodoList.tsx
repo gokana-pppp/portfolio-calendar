@@ -5,11 +5,10 @@ import React, {
   SetStateAction,
 } from "react";
 import styles from "./todolist.module.scss";
-import { Todo } from "../../pages/Home";
 import { RadioBtn } from "./RadioBtn";
 import { TodoInput } from "./TodoInput";
 import { List } from "./List";
-import { URGENT, MORNING, AFTERNOON } from "../../pages/Home";
+import { Todo, URGENT, MORNING, AFTERNOON } from "../../pages/Home";
 
 export const RadioContext = createContext(
   {} as {

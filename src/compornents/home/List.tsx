@@ -1,8 +1,21 @@
-import React, { useContext } from "react";
+import React, {
+  useContext,
+  useState,
+  createContext,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import styles from "./todolist.module.scss";
-import { Todo } from "../../pages/Home";
 import { TodosContext } from "./TodoList";
-import { URGENT, MORNING, AFTERNOON } from "../../pages/Home";
+import { Todo, URGENT, MORNING, AFTERNOON } from "../../pages/Home";
+import { Checkbox } from "./Checkbox";
+
+export const CheckedContext = createContext(
+  {} as {
+    isChecked: boolean;
+    setIsChecked: Dispatch<SetStateAction<boolean>>;
+  }
+);
 
 type Props = {
   categoly: string;
@@ -11,6 +24,8 @@ type Props = {
 export const List = (props: Props) => {
   const { categoly } = props;
   const { todos } = useContext(TodosContext);
+  //チェックボックスにチェックが有るか無いかのstate管理
+  const [isChecked, setIsChecked] = useState(false);
 
   const categolies = [URGENT, MORNING, AFTERNOON];
 
@@ -28,15 +43,27 @@ export const List = (props: Props) => {
       {getTodos(categoly).map((todo) => {
         return (
           <div className={styles.table} key={todo.id}>
-            <table>
+            <table className={styles.tb}>
               <tbody>
                 <tr>
-                  <td className={styles.tb}>・{todo.title}</td>
+                  <td className={styles.ta_td}>
+                    <CheckedContext.Provider
+                      value={{ isChecked, setIsChecked }}
+                    >
+                      <Checkbox />
+                    </CheckedContext.Provider>
+                    {/* チェック有だと、todo.titleに取り消し線 */}
+                    <label className={isChecked ? styles.isChecked_label : ""}>
+                      {todo.title}
+                    </label>
+                  </td>
                   <th>
-                    <input type="checkbox" className={styles.ta_check} />
                     <button className={styles.ta_button}>削除</button>
-                    <button className={styles.ta_button}>依頼</button>
-                    <select key={categoly}>
+                    {/* チェック有だと、依頼ボタンは非活性になる */}
+                    <button className={styles.ta_button} disabled={isChecked}>
+                      依頼
+                    </button>
+                    <select key={categoly} disabled={isChecked}>
                       {categolies.map((categoly) => {
                         return <option key={categoly}>{categoly}</option>;
                       })}
