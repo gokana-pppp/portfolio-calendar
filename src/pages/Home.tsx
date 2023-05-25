@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MyCalendar } from "compornents/home/MyCalendar";
 import { TodoList } from "compornents/home/TodoList";
 import styles from "./home.module.scss";
@@ -20,6 +20,13 @@ export type Todo = {
   status: "作業中" | "完了";
   request: boolean;
 };
+
+export const URGENT = "急ぎ";
+export const MORNING = "午前";
+export const AFTERNOON = "午後";
+
+export const WORK_ON_PROGRESS = "作業中";
+export const DONE = "完了";
 
 export const Home = () => {
   return (

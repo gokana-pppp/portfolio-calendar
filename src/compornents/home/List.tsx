@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styles from "./todolist.module.scss";
 import { Todo } from "../../pages/Home";
 import { TodosContext } from "./TodoList";
+import { URGENT, MORNING, AFTERNOON } from "../../pages/Home";
 
 type Props = {
   categoly: string;
@@ -11,9 +12,6 @@ export const List = (props: Props) => {
   const { categoly } = props;
   const { todos } = useContext(TodosContext);
 
-  const URGENT = "急ぎ";
-  const MORNING = "午前";
-  const AFTERNOON = "午後";
   const categolies = [URGENT, MORNING, AFTERNOON];
 
   const getTodos = (categoly: string): Todo[] => {

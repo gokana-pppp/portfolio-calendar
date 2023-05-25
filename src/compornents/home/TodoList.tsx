@@ -9,6 +9,7 @@ import { Todo } from "../../pages/Home";
 import { RadioBtn } from "./RadioBtn";
 import { TodoInput } from "./TodoInput";
 import { List } from "./List";
+import { URGENT, MORNING, AFTERNOON } from "../../pages/Home";
 
 export const RadioContext = createContext(
   {} as {
@@ -31,13 +32,6 @@ export const TextContext = createContext(
   }
 );
 
-export const URGENT = "急ぎ";
-export const MORNING = "午前";
-export const AFTERNOON = "午後";
-
-export const WORK_ON_PROGRESS = "作業中";
-export const DONE = "完了";
-
 export const TodoList = () => {
   const [radioCategoly, setRadioCategoly] = useState<string>("午前");
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -51,9 +45,9 @@ export const TodoList = () => {
       <RadioContext.Provider value={{ radioCategoly, setRadioCategoly }}>
         <TodosContext.Provider value={{ todos, setTodos }}>
           <TextContext.Provider value={{ text, setText }}>
-            <TodoInput WORK_ON_PROGRESS={WORK_ON_PROGRESS} />
+            <TodoInput />
           </TextContext.Provider>
-          <RadioBtn URGENT={URGENT} MORNING={MORNING} AFTERNOON={AFTERNOON} />
+          <RadioBtn />
           <List categoly={URGENT} />
           <List categoly={MORNING} />
           <List categoly={AFTERNOON} />
