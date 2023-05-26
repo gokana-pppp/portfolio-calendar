@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
-import { CheckedContext } from "./List";
-import { TodosContext } from "./TodoList";
-import { WORK_ON_PROGRESS, DONE } from "pages/Home";
+import React, { Dispatch, SetStateAction } from "react";
+import { WORK_ON_PROGRESS, DONE, Todo } from "pages/Home";
 
-export const Checkbox = () => {
-  const { isChecked, setIsChecked } = useContext(CheckedContext);
-  const { setTodos } = useContext(TodosContext);
+type Props = {
+  isChecked: boolean;
+  setIsChecked: Dispatch<SetStateAction<boolean>>;
+  setTodos: Dispatch<SetStateAction<Todo[]>>;
+};
+
+export const Checkbox = (props: Props) => {
+  const { isChecked, setIsChecked, setTodos } = props;
 
   // チェック有りだとstatusがDONEに変わり、チェック無しにするとstatusがWORK_ON_PROGRESSに変わる
   const onChangeCheckBox = () => {

@@ -1,21 +1,8 @@
-import React, {
-  useContext,
-  useState,
-  createContext,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import React, { useContext, useState } from "react";
 import styles from "./todolist.module.scss";
 import { TodosContext } from "./TodoList";
 import { Todo, URGENT, MORNING, AFTERNOON } from "../../pages/Home";
 import { Checkbox } from "./Checkbox";
-
-export const CheckedContext = createContext(
-  {} as {
-    isChecked: boolean;
-    setIsChecked: Dispatch<SetStateAction<boolean>>;
-  }
-);
 
 type Props = {
   categoly: string;
@@ -23,7 +10,7 @@ type Props = {
 
 export const List = (props: Props) => {
   const { categoly } = props;
-  const { todos } = useContext(TodosContext);
+  const { todos, setTodos } = useContext(TodosContext);
   //チェックボックスにチェックが有るか無いかのstate管理
   const [isChecked, setIsChecked] = useState(false);
 
@@ -47,11 +34,11 @@ export const List = (props: Props) => {
               <tbody>
                 <tr>
                   <td className={styles.ta_td}>
-                    <CheckedContext.Provider
-                      value={{ isChecked, setIsChecked }}
-                    >
-                      <Checkbox />
-                    </CheckedContext.Provider>
+                    <Checkbox
+                      isChecked={isChecked}
+                      setIsChecked={setIsChecked}
+                      setTodos={setTodos}
+                    />
                     {/* チェック有だと、todo.titleに取り消し線 */}
                     <label className={isChecked ? styles.isChecked_label : ""}>
                       {todo.title}
