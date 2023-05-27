@@ -5,26 +5,26 @@ type Props = {
   isChecked: boolean;
   setIsChecked: Dispatch<SetStateAction<boolean>>;
   setTodos: Dispatch<SetStateAction<Todo[]>>;
+  targetTodoId: number;
 };
 
 export const Checkbox = (props: Props) => {
-  const { isChecked, setIsChecked, setTodos } = props;
+  const { isChecked, setIsChecked, setTodos, targetTodoId } = props;
 
   // チェック有りだとstatusがDONEに変わり、チェック無しにするとstatusがWORK_ON_PROGRESSに変わる
   const onChangeCheckBox = () => {
     setIsChecked(!isChecked);
     if (!isChecked) {
       setTodos((todos) => {
-        const updatedTodos = todos.map((todo) =>
-          todo.id === todo.id ? { ...todo, status: DONE } : todo
-        );
-        return updatedTodos;
-      });
-    } else {
-      setTodos((todos) => {
-        const updatedTodos = todos.map((todo) =>
-          todo.id === todo.id ? { ...todo, status: WORK_ON_PROGRESS } : todo
-        );
+        const updatedTodos: Todo[] = todos.map((todo) => {
+          if (todo.id === targetTodoId) {
+            return {
+              ...todo,
+              status: isChecked ? WORK_ON_PROGRESS : DONE,
+            };
+          }
+          return todo;
+        });
         return updatedTodos;
       });
     }

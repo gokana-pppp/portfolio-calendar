@@ -38,6 +38,7 @@ export const List = (props: Props) => {
                       isChecked={isChecked}
                       setIsChecked={setIsChecked}
                       setTodos={setTodos}
+                      targetTodoId={todo.id}
                     />
                     {/* チェック有だと、todo.titleに取り消し線 */}
                     <label className={isChecked ? styles.isChecked_label : ""}>

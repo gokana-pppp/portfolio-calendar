@@ -17,7 +17,7 @@ export type Todo = {
   id: number;
   title: string;
   categoly: string;
-  status: string;
+  status: "作業中" | "完了";
   request: boolean;
 };
 
