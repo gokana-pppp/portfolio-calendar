@@ -3,6 +3,7 @@ import styles from "./todolist.module.scss";
 import { TodosContext } from "./TodoList";
 import { Todo, URGENT, MORNING, AFTERNOON } from "../../pages/Home";
 import { Checkbox } from "./Checkbox";
+import { RequestBtn } from "./RequestBtn";
 
 type Props = {
   categoly: string;
@@ -12,6 +13,8 @@ export const List = (props: Props) => {
   const { categoly } = props;
   const { todos, setTodos } = useContext(TodosContext);
   const [isChecked, setIsChecked] = useState(false);
+  //依頼ボタンのstate管理
+  const [isRequested, setIsRequested] = useState<boolean>(false);
 
   const categolies = [URGENT, MORNING, AFTERNOON];
 
@@ -29,7 +32,8 @@ export const List = (props: Props) => {
       {getTodos(categoly).map((todo) => {
         return (
           <div className={styles.table} key={todo.id}>
-            <table className={styles.tb}>
+            {/* 依頼中だと背景と文字の色変更 */}
+            <table className={isRequested ? styles.isRequested_todo : ""}>
               <tbody>
                 <tr>
                   <td className={styles.ta_td}>
@@ -45,9 +49,13 @@ export const List = (props: Props) => {
                   </td>
                   <th>
                     <button className={styles.ta_button}>削除</button>
-                    <button className={styles.ta_button} disabled={isChecked}>
-                      依頼
-                    </button>
+                    <RequestBtn
+                      isChecked={isChecked}
+                      isRequested={isRequested}
+                      setIsRequested={setIsRequested}
+                      setTodos={setTodos}
+                      targetTodoId={todo.id}
+                    />
                     <select key={categoly} disabled={isChecked}>
                       {categolies.map((categoly) => {
                         return <option key={categoly}>{categoly}</option>;

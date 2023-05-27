@@ -48,7 +48,7 @@
   margin: auto;
   font-size: 15px;
   .ta_td {
-    width: 200px;
+    width: 180px;
   }
   .ta_button {
     margin: 0 5px 0 0;
@@ -59,4 +59,11 @@
 .isChecked_label {
   text-decoration: line-through;
   color: gray;
+}
+
+//依頼ボタンが押されると以下のclassNameが付与される
+.isRequested_todo {
+  background-color: #4682b4;
+  color: white;
+  width: 100%;
 }
