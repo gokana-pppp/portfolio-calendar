@@ -11,7 +11,6 @@ type Props = {
 export const List = (props: Props) => {
   const { categoly } = props;
   const { todos, setTodos } = useContext(TodosContext);
-  //チェックボックスにチェックが有るか無いかのstate管理
   const [isChecked, setIsChecked] = useState(false);
 
   const categolies = [URGENT, MORNING, AFTERNOON];
@@ -40,14 +39,12 @@ export const List = (props: Props) => {
                       setTodos={setTodos}
                       targetTodoId={todo.id}
                     />
-                    {/* チェック有だと、todo.titleに取り消し線 */}
                     <label className={isChecked ? styles.isChecked_label : ""}>
                       {todo.title}
                     </label>
                   </td>
                   <th>
                     <button className={styles.ta_button}>削除</button>
-                    {/* チェック有だと、依頼ボタンは非活性になる */}
                     <button className={styles.ta_button} disabled={isChecked}>
                       依頼
                     </button>

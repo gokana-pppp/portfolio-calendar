@@ -10,8 +10,6 @@ type Props = {
 
 export const Checkbox = (props: Props) => {
   const { isChecked, setIsChecked, setTodos, targetTodoId } = props;
-
-  // チェック有りだとstatusがDONEに変わり、チェック無しにするとstatusがWORK_ON_PROGRESSに変わる
   const onChangeCheckBox = () => {
     setIsChecked(!isChecked);
     if (!isChecked) {
