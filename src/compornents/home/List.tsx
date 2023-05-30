@@ -1,20 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import styles from "./todolist.module.scss";
-import { TodosContext } from "./TodoList";
-import { Todo, URGENT, MORNING, AFTERNOON } from "../../pages/Home";
+import {
+  Todo,
+  URGENT,
+  MORNING,
+  AFTERNOON,
+  REQUESTED,
+  WANT_TO_REQUEST,
+} from "../../pages/Home";
 import { Checkbox } from "./Checkbox";
 import { RequestBtn } from "./RequestBtn";
 
 type Props = {
   categoly: string;
+  todos: Todo[];
+  setTodos: Dispatch<SetStateAction<Todo[]>>;
 };
 
 export const List = (props: Props) => {
-  const { categoly } = props;
-  const { todos, setTodos } = useContext(TodosContext);
+  const { categoly, todos, setTodos } = props;
+  //プルダウンメニューをdisabledにするのに使用する
+  const [disabled, setDisabled] = useState<boolean>(false);
+  //チェックボックスが押されたかどうかを管理
   const [isChecked, setIsChecked] = useState(false);
-  //依頼ボタンのstate管理
-  const [isRequested, setIsRequested] = useState<boolean>(false);
 
   const categolies = [URGENT, MORNING, AFTERNOON];
 
@@ -33,7 +41,11 @@ export const List = (props: Props) => {
         return (
           <div className={styles.table} key={todo.id}>
             {/* 依頼中だと背景と文字の色変更 */}
-            <table className={isRequested ? styles.isRequested_todo : ""}>
+            <table
+              className={`${
+                todo.requested === true ? styles.isRequested_todo : ""
+              } `}
+            >
               <tbody>
                 <tr>
                   <td className={styles.ta_td}>
@@ -42,6 +54,8 @@ export const List = (props: Props) => {
                       setIsChecked={setIsChecked}
                       setTodos={setTodos}
                       targetTodoId={todo.id}
+                      disabled={disabled}
+                      setDisabled={setDisabled}
                     />
                     <label className={isChecked ? styles.isChecked_label : ""}>
                       {todo.title}
@@ -50,13 +64,16 @@ export const List = (props: Props) => {
                   <th>
                     <button className={styles.ta_button}>削除</button>
                     <RequestBtn
-                      isChecked={isChecked}
-                      isRequested={isRequested}
-                      setIsRequested={setIsRequested}
                       setTodos={setTodos}
                       targetTodoId={todo.id}
+                      disabled={disabled}
+                      setDisabled={setDisabled}
+                      BtnMessage={`${
+                        todo.requested === true ? REQUESTED : WANT_TO_REQUEST
+                      }`}
+                      isChecked={isChecked}
                     />
-                    <select key={categoly} disabled={isChecked}>
+                    <select key={categoly} disabled={disabled}>
                       {categolies.map((categoly) => {
                         return <option key={categoly}>{categoly}</option>;
                       })}

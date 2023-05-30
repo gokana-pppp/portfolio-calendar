@@ -1,13 +1,18 @@
-import React, { ChangeEvent, useContext, useRef } from "react";
-import { TextContext, TodosContext, RadioContext } from "./TodoList";
+import React, { ChangeEvent, useRef, Dispatch, SetStateAction } from "react";
+
 import styles from "./todolist.module.scss";
 import { Todo, WORK_ON_PROGRESS } from "../../pages/Home";
 
-export const TodoInput = () => {
-  const { text, setText } = useContext(TextContext);
-  const { todos, setTodos } = useContext(TodosContext);
-  const { radioCategoly } = useContext(RadioContext);
+type Props = {
+  text: string;
+  setText: Dispatch<SetStateAction<string>>;
+  todos: Todo[];
+  setTodos: Dispatch<SetStateAction<Todo[]>>;
+  radioCategoly: string;
+};
 
+export const TodoInput = (props: Props) => {
+  const { text, setText, todos, setTodos, radioCategoly } = props;
   const date = new Date();
   const createdDate: number = date.getTime();
   const textRef = useRef<HTMLInputElement>(null!);
@@ -19,7 +24,7 @@ export const TodoInput = () => {
       title: textRef.current.value,
       categoly: radioCategoly,
       status: WORK_ON_PROGRESS,
-      request: false,
+      requested: false,
     };
     setTodos([...todos, newTodo]);
     setText("");

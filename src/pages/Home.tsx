@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { MyCalendar } from "compornents/home/MyCalendar";
 import { TodoList } from "compornents/home/TodoList";
 import styles from "./home.module.scss";
@@ -18,7 +18,7 @@ export type Todo = {
   title: string;
   categoly: string;
   status: typeof WORK_ON_PROGRESS | typeof DONE;
-  request: boolean;
+  requested: boolean;
 };
 
 export const URGENT = "急ぎ";
@@ -27,6 +27,9 @@ export const AFTERNOON = "午後";
 
 export const WORK_ON_PROGRESS = "作業中";
 export const DONE = "完了";
+
+export const REQUESTED = "依頼中";
+export const WANT_TO_REQUEST = "依頼する";
 
 export const Home = () => {
   return (

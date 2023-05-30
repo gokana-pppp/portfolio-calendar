@@ -1,10 +1,14 @@
-import React, { ChangeEvent, useContext } from "react";
+import React, { ChangeEvent, Dispatch, SetStateAction } from "react";
 import styles from "./todolist.module.scss";
-import { RadioContext } from "./TodoList";
 import { URGENT, MORNING, AFTERNOON } from "pages/Home";
 
-export const RadioBtn = () => {
-  const { radioCategoly, setRadioCategoly } = useContext(RadioContext);
+type Props = {
+  radioCategoly: string;
+  setRadioCategoly: Dispatch<SetStateAction<string>>;
+};
+
+export const RadioBtn = (props: Props) => {
+  const { radioCategoly, setRadioCategoly } = props;
 
   const categolies = [URGENT, MORNING, AFTERNOON];
 

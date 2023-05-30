@@ -3,32 +3,38 @@ import styles from "./todolist.module.scss";
 import { Todo } from "pages/Home";
 
 type Props = {
-  isChecked: boolean;
-  isRequested: boolean;
-  setIsRequested: Dispatch<SetStateAction<boolean>>;
   setTodos: Dispatch<SetStateAction<Todo[]>>;
   targetTodoId: number;
+  disabled: boolean;
+  setDisabled: Dispatch<SetStateAction<boolean>>;
+  BtnMessage: string;
+  isChecked: boolean;
 };
 
 export const RequestBtn = (props: Props) => {
-  const { isChecked, isRequested, setIsRequested, setTodos, targetTodoId } =
-    props;
+  const {
+    setTodos,
+    targetTodoId,
+    disabled,
+    setDisabled,
+    BtnMessage,
+    isChecked,
+  } = props;
+
   const handleRequestBtn = () => {
-    setIsRequested(!isRequested);
-    if (!isRequested) {
-      setTodos((todos) => {
-        const updatedTodos: Todo[] = todos.map((todo) => {
-          if (todo.id === targetTodoId) {
-            return {
-              ...todo,
-              request: isRequested ? false : true,
-            };
-          }
-          return todo;
-        });
-        return updatedTodos;
+    setDisabled(!disabled);
+
+    setTodos((todos) => {
+      return todos.map((todo) => {
+        if (todo.id === targetTodoId) {
+          return {
+            ...todo,
+            requested: todo.requested ? false : true,
+          };
+        }
+        return todo;
       });
-    }
+    });
   };
 
   return (
@@ -37,7 +43,7 @@ export const RequestBtn = (props: Props) => {
       disabled={isChecked}
       onClick={() => handleRequestBtn()}
     >
-      {isRequested ? "依頼中" : "依頼する"}
+      {BtnMessage}
     </button>
   );
 };

@@ -1,35 +1,9 @@
-import React, {
-  useState,
-  createContext,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import React, { useState } from "react";
 import styles from "./todolist.module.scss";
 import { RadioBtn } from "./RadioBtn";
 import { TodoInput } from "./TodoInput";
 import { List } from "./List";
 import { Todo, URGENT, MORNING, AFTERNOON } from "../../pages/Home";
-
-export const RadioContext = createContext(
-  {} as {
-    radioCategoly: string;
-    setRadioCategoly: Dispatch<SetStateAction<string>>;
-  }
-);
-
-export const TodosContext = createContext(
-  {} as {
-    todos: Todo[];
-    setTodos: Dispatch<SetStateAction<Todo[]>>;
-  }
-);
-
-export const TextContext = createContext(
-  {} as {
-    text: string;
-    setText: Dispatch<SetStateAction<string>>;
-  }
-);
 
 export const TodoList = () => {
   const [radioCategoly, setRadioCategoly] = useState<string>("午前");
@@ -41,17 +15,22 @@ export const TodoList = () => {
       <div className={styles.title}>
         <p>Todoリスト</p>
       </div>
-      <RadioContext.Provider value={{ radioCategoly, setRadioCategoly }}>
-        <TodosContext.Provider value={{ todos, setTodos }}>
-          <TextContext.Provider value={{ text, setText }}>
-            <TodoInput />
-          </TextContext.Provider>
-          <RadioBtn />
-          <List categoly={URGENT} />
-          <List categoly={MORNING} />
-          <List categoly={AFTERNOON} />
-        </TodosContext.Provider>
-      </RadioContext.Provider>
+
+      <TodoInput
+        text={text}
+        setText={setText}
+        todos={todos}
+        setTodos={setTodos}
+        radioCategoly={radioCategoly}
+      />
+
+      <RadioBtn
+        radioCategoly={radioCategoly}
+        setRadioCategoly={setRadioCategoly}
+      />
+      <List categoly={URGENT} todos={todos} setTodos={setTodos} />
+      <List categoly={MORNING} todos={todos} setTodos={setTodos} />
+      <List categoly={AFTERNOON} todos={todos} setTodos={setTodos} />
     </div>
   );
 };

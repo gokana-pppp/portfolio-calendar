@@ -6,15 +6,27 @@ type Props = {
   setIsChecked: Dispatch<SetStateAction<boolean>>;
   setTodos: Dispatch<SetStateAction<Todo[]>>;
   targetTodoId: number;
+  disabled: boolean;
+  setDisabled: Dispatch<SetStateAction<boolean>>;
 };
 
 export const Checkbox = (props: Props) => {
-  const { isChecked, setIsChecked, setTodos, targetTodoId } = props;
+  const {
+    isChecked,
+    setIsChecked,
+    setTodos,
+    targetTodoId,
+    disabled,
+    setDisabled,
+  } = props;
+
   const onChangeCheckBox = () => {
     setIsChecked(!isChecked);
+    setDisabled(!disabled);
+
     if (!isChecked) {
       setTodos((todos) => {
-        const updatedTodos: Todo[] = todos.map((todo) => {
+        return todos.map((todo) => {
           if (todo.id === targetTodoId) {
             return {
               ...todo,
@@ -23,7 +35,6 @@ export const Checkbox = (props: Props) => {
           }
           return todo;
         });
-        return updatedTodos;
       });
     }
   };
