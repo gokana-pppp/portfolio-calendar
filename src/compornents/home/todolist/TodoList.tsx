@@ -3,7 +3,7 @@ import styles from "./todolist.module.scss";
 import { RadioBtn } from "./RadioBtn";
 import { TodoInput } from "./TodoInput";
 import { List } from "./List";
-import { Todo, URGENT, MORNING, AFTERNOON } from "../../pages/Home";
+import { Todo, URGENT, MORNING, AFTERNOON } from "../../../pages/Home";
 
 export const TodoList = () => {
   const [radioCategoly, setRadioCategoly] = useState<string>("午前");

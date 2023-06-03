@@ -7,7 +7,7 @@ import {
   AFTERNOON,
   REQUESTED,
   WANT_TO_REQUEST,
-} from "../../pages/Home";
+} from "../../../pages/Home";
 import { Checkbox } from "./Checkbox";
 import { RequestBtn } from "./RequestBtn";
 

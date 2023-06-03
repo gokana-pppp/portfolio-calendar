@@ -1,6 +1,6 @@
 import React, { ChangeEvent, Dispatch, SetStateAction } from "react";
 import styles from "./todolist.module.scss";
-import { URGENT, MORNING, AFTERNOON } from "pages/Home";
+import { URGENT, MORNING, AFTERNOON } from "../../../pages/Home";
 
 type Props = {
   radioCategoly: string;

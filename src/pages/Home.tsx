@@ -1,6 +1,6 @@
 import React from "react";
-import { MyCalendar } from "compornents/home/MyCalendar";
-import { TodoList } from "compornents/home/TodoList";
+import { MyCalendar } from "compornents/home/calendar/MyCalendar";
+import { TodoList } from "compornents/home/todolist/TodoList";
 import styles from "./home.module.scss";
 
 export type Event = {

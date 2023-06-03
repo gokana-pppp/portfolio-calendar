@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { Todo } from "pages/Home";
+import { Todo } from "../../../pages/Home";
 
 type Props = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;

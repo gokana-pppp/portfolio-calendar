@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useRef, Dispatch, SetStateAction } from "react";
 
 import styles from "./todolist.module.scss";
-import { Todo } from "../../pages/Home";
+import { Todo } from "../../../pages/Home";
 
 type Props = {
   text: string;
