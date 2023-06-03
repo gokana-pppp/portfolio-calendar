@@ -28,6 +28,8 @@ export const AFTERNOON = "午後";
 export const REQUESTED = "依頼中";
 export const WANT_TO_REQUEST = "依頼する";
 
+export const categolies = [URGENT, MORNING, AFTERNOON];
+
 export const Home = () => {
   return (
     <div className={styles.container}>

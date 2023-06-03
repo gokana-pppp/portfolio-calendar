@@ -14,6 +14,10 @@
   }
 }
 
+.radio_buttons {
+  text-align: center;
+}
+
 .radio_button_area {
   display: inline-block;
 
@@ -48,7 +52,7 @@
   margin: auto;
   font-size: 15px;
   .ta_td {
-    width: 180px;
+    width: 175px;
   }
   .ta_button {
     margin: 0 5px 0 0;
@@ -59,11 +63,20 @@
 .isChecked_label {
   text-decoration: line-through;
   color: gray;
+  margin-left: 5px;
 }
 
-//依頼ボタンが押されると以下のclassNameが付与される
 .isRequested_todo {
   background-color: #4682b4;
   color: white;
   width: 100%;
+}
+
+.move_button {
+  font-size: 7px;
+  margin-left: 5px;
+}
+
+.select_menu {
+  font-size: 13px;
 }

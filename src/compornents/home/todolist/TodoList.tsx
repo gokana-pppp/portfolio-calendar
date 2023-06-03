@@ -23,11 +23,13 @@ export const TodoList = () => {
         setTodos={setTodos}
         radioCategoly={radioCategoly}
       />
+      <div className={styles.radio_buttons}>
+        <RadioBtn
+          radioCategoly={radioCategoly}
+          setRadioCategoly={setRadioCategoly}
+        />
+      </div>
 
-      <RadioBtn
-        radioCategoly={radioCategoly}
-        setRadioCategoly={setRadioCategoly}
-      />
       <List categoly={URGENT} todos={todos} setTodos={setTodos} />
       <List categoly={MORNING} todos={todos} setTodos={setTodos} />
       <List categoly={AFTERNOON} todos={todos} setTodos={setTodos} />

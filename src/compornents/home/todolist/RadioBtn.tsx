@@ -1,6 +1,6 @@
 import React, { ChangeEvent, Dispatch, SetStateAction } from "react";
 import styles from "./todolist.module.scss";
-import { URGENT, MORNING, AFTERNOON } from "../../../pages/Home";
+import { categolies } from "../../../pages/Home";
 
 type Props = {
   radioCategoly: string;
@@ -9,8 +9,6 @@ type Props = {
 
 export const RadioBtn = (props: Props) => {
   const { radioCategoly, setRadioCategoly } = props;
-
-  const categolies = [URGENT, MORNING, AFTERNOON];
 
   const onChangeRadioBtn = (e: ChangeEvent<HTMLInputElement>): void => {
     setRadioCategoly(e.target.value);

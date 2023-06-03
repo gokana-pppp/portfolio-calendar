@@ -1,15 +1,9 @@
 import React, { Dispatch, SetStateAction } from "react";
 import styles from "./todolist.module.scss";
-import {
-  Todo,
-  URGENT,
-  MORNING,
-  AFTERNOON,
-  REQUESTED,
-  WANT_TO_REQUEST,
-} from "../../../pages/Home";
+import { Todo, REQUESTED, WANT_TO_REQUEST } from "../../../pages/Home";
 import { Checkbox } from "./Checkbox";
 import { RequestBtn } from "./RequestBtn";
+import { PulldownMenu } from "./PulldownMenu";
 
 type Props = {
   categoly: string;
@@ -19,8 +13,6 @@ type Props = {
 
 export const List = (props: Props) => {
   const { categoly, todos, setTodos } = props;
-
-  const categolies = [URGENT, MORNING, AFTERNOON];
 
   const getTodos = (categoly: string): Todo[] => {
     return todos.filter((todo) => todo.categoly === categoly);
@@ -65,11 +57,12 @@ export const List = (props: Props) => {
                       }`}
                       isFinished={todo.isFinished}
                     />
-                    <select key={categoly} disabled={todo.isFinished}>
-                      {categolies.map((categoly) => {
-                        return <option key={categoly}>{categoly}</option>;
-                      })}
-                    </select>
+                    <PulldownMenu
+                      categoly={categoly}
+                      setTodos={setTodos}
+                      targetTodoId={todo.id}
+                      isFinished={todo.isFinished}
+                    />
                   </th>
                 </tr>
               </tbody>
