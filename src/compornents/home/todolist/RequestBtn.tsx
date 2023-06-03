@@ -6,11 +6,11 @@ type Props = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
   targetTodoId: number;
   BtnMessage: string;
-  boolean: boolean;
+  isFinished: boolean;
 };
 
 export const RequestBtn = (props: Props) => {
-  const { setTodos, targetTodoId, BtnMessage, boolean } = props;
+  const { setTodos, targetTodoId, BtnMessage, isFinished } = props;
 
   const handleRequestBtn = () => {
     setTodos((todos) => {
@@ -18,7 +18,7 @@ export const RequestBtn = (props: Props) => {
         if (todo.id === targetTodoId) {
           return {
             ...todo,
-            requested: todo.requested ? false : true,
+            requested: !todo.requested,
           };
         }
         return todo;
@@ -29,7 +29,7 @@ export const RequestBtn = (props: Props) => {
   return (
     <button
       className={styles.ta_button}
-      disabled={boolean}
+      disabled={isFinished}
       onClick={() => handleRequestBtn()}
     >
       {BtnMessage}

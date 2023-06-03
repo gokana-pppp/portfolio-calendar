@@ -4,11 +4,11 @@ import { Todo } from "pages/Home";
 type Props = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
   targetTodoId: number;
-  boolean: boolean;
+  isFinished: boolean;
 };
 
 export const Checkbox = (props: Props) => {
-  const { setTodos, targetTodoId, boolean } = props;
+  const { setTodos, targetTodoId, isFinished } = props;
 
   const onChangeCheckBox = () => {
     setTodos((todos) => {
@@ -16,7 +16,7 @@ export const Checkbox = (props: Props) => {
         if (todo.id === targetTodoId) {
           return {
             ...todo,
-            isFinished: todo.isFinished ? false : true,
+            isFinished: !todo.isFinished,
           };
         }
         return todo;
@@ -25,6 +25,6 @@ export const Checkbox = (props: Props) => {
   };
 
   return (
-    <input type="checkbox" checked={boolean} onChange={onChangeCheckBox} />
+    <input type="checkbox" checked={isFinished} onChange={onChangeCheckBox} />
   );
 };

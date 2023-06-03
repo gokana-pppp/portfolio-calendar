@@ -36,7 +36,6 @@ export const List = (props: Props) => {
       {getTodos(categoly).map((todo) => {
         return (
           <div className={styles.table} key={todo.id}>
-            {/* 依頼中だと背景と文字の色変更 */}
             <table
               className={`${todo.requested ? styles.isRequested_todo : ""} `}
             >
@@ -46,7 +45,7 @@ export const List = (props: Props) => {
                     <Checkbox
                       setTodos={setTodos}
                       targetTodoId={todo.id}
-                      boolean={todo.isFinished}
+                      isFinished={todo.isFinished}
                     />
                     <label
                       className={`${
@@ -64,7 +63,7 @@ export const List = (props: Props) => {
                       BtnMessage={`${
                         todo.requested ? REQUESTED : WANT_TO_REQUEST
                       }`}
-                      boolean={todo.isFinished}
+                      isFinished={todo.isFinished}
                     />
                     <select key={categoly} disabled={todo.isFinished}>
                       {categolies.map((categoly) => {
