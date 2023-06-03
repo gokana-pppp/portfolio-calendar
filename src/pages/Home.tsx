@@ -17,16 +17,13 @@ export type Todo = {
   id: number;
   title: string;
   categoly: string;
-  status: typeof WORK_ON_PROGRESS | typeof DONE;
+  isFinished: boolean;
   requested: boolean;
 };
 
 export const URGENT = "急ぎ";
 export const MORNING = "午前";
 export const AFTERNOON = "午後";
-
-export const WORK_ON_PROGRESS = "作業中";
-export const DONE = "完了";
 
 export const REQUESTED = "依頼中";
 export const WANT_TO_REQUEST = "依頼する";

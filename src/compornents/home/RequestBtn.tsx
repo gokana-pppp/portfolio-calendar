@@ -5,25 +5,14 @@ import { Todo } from "pages/Home";
 type Props = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
   targetTodoId: number;
-  disabled: boolean;
-  setDisabled: Dispatch<SetStateAction<boolean>>;
   BtnMessage: string;
-  isChecked: boolean;
+  boolean: boolean;
 };
 
 export const RequestBtn = (props: Props) => {
-  const {
-    setTodos,
-    targetTodoId,
-    disabled,
-    setDisabled,
-    BtnMessage,
-    isChecked,
-  } = props;
+  const { setTodos, targetTodoId, BtnMessage, boolean } = props;
 
   const handleRequestBtn = () => {
-    setDisabled(!disabled);
-
     setTodos((todos) => {
       return todos.map((todo) => {
         if (todo.id === targetTodoId) {
@@ -40,7 +29,7 @@ export const RequestBtn = (props: Props) => {
   return (
     <button
       className={styles.ta_button}
-      disabled={isChecked}
+      disabled={boolean}
       onClick={() => handleRequestBtn()}
     >
       {BtnMessage}

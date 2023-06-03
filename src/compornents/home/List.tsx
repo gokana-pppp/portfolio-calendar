@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import styles from "./todolist.module.scss";
 import {
   Todo,
@@ -19,10 +19,6 @@ type Props = {
 
 export const List = (props: Props) => {
   const { categoly, todos, setTodos } = props;
-  //プルダウンメニューをdisabledにするのに使用する
-  const [disabled, setDisabled] = useState<boolean>(false);
-  //チェックボックスが押されたかどうかを管理
-  const [isChecked, setIsChecked] = useState(false);
 
   const categolies = [URGENT, MORNING, AFTERNOON];
 
@@ -42,22 +38,21 @@ export const List = (props: Props) => {
           <div className={styles.table} key={todo.id}>
             {/* 依頼中だと背景と文字の色変更 */}
             <table
-              className={`${
-                todo.requested === true ? styles.isRequested_todo : ""
-              } `}
+              className={`${todo.requested ? styles.isRequested_todo : ""} `}
             >
               <tbody>
                 <tr>
                   <td className={styles.ta_td}>
                     <Checkbox
-                      isChecked={isChecked}
-                      setIsChecked={setIsChecked}
                       setTodos={setTodos}
                       targetTodoId={todo.id}
-                      disabled={disabled}
-                      setDisabled={setDisabled}
+                      boolean={todo.isFinished}
                     />
-                    <label className={isChecked ? styles.isChecked_label : ""}>
+                    <label
+                      className={`${
+                        todo.isFinished ? styles.isChecked_label : ""
+                      }`}
+                    >
                       {todo.title}
                     </label>
                   </td>
@@ -66,14 +61,12 @@ export const List = (props: Props) => {
                     <RequestBtn
                       setTodos={setTodos}
                       targetTodoId={todo.id}
-                      disabled={disabled}
-                      setDisabled={setDisabled}
                       BtnMessage={`${
-                        todo.requested === true ? REQUESTED : WANT_TO_REQUEST
+                        todo.requested ? REQUESTED : WANT_TO_REQUEST
                       }`}
-                      isChecked={isChecked}
+                      boolean={todo.isFinished}
                     />
-                    <select key={categoly} disabled={disabled}>
+                    <select key={categoly} disabled={todo.isFinished}>
                       {categolies.map((categoly) => {
                         return <option key={categoly}>{categoly}</option>;
                       })}

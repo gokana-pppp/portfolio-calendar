@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useRef, Dispatch, SetStateAction } from "react";
 
 import styles from "./todolist.module.scss";
-import { Todo, WORK_ON_PROGRESS } from "../../pages/Home";
+import { Todo } from "../../pages/Home";
 
 type Props = {
   text: string;
@@ -23,7 +23,7 @@ export const TodoInput = (props: Props) => {
       id: createdDate,
       title: textRef.current.value,
       categoly: radioCategoly,
-      status: WORK_ON_PROGRESS,
+      isFinished: false,
       requested: false,
     };
     setTodos([...todos, newTodo]);
