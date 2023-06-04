@@ -6,26 +6,26 @@ import { RequestBtn } from "./RequestBtn";
 import { PulldownMenu } from "./PulldownMenu";
 
 type Props = {
-  categoly: string;
+  category: string;
   todos: Todo[];
   setTodos: Dispatch<SetStateAction<Todo[]>>;
 };
 
 export const List = (props: Props) => {
-  const { categoly, todos, setTodos } = props;
+  const { category, todos, setTodos } = props;
 
-  const getTodos = (categoly: string): Todo[] => {
-    return todos.filter((todo) => todo.categoly === categoly);
+  const getTodos = (category: string): Todo[] => {
+    return todos.filter((todo) => todo.category === category);
   };
 
   return (
     <div className={styles.list_container}>
       <div className={styles.subtitle}>
         <div>
-          <p>【{categoly}】</p>
+          <p>【{category}】</p>
         </div>
       </div>
-      {getTodos(categoly).map((todo) => {
+      {getTodos(category).map((todo) => {
         return (
           <div className={styles.table} key={todo.id}>
             <table
@@ -58,7 +58,7 @@ export const List = (props: Props) => {
                       isFinished={todo.isFinished}
                     />
                     <PulldownMenu
-                      categoly={categoly}
+                      category={category}
                       setTodos={setTodos}
                       targetTodoId={todo.id}
                       isFinished={todo.isFinished}

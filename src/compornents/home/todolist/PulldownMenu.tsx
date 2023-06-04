@@ -1,30 +1,30 @@
 import React, { ChangeEvent, useState, Dispatch, SetStateAction } from "react";
-import { URGENT, Todo, categolies } from "./../../../pages/Home";
+import { URGENT, Todo, categories } from "./../../../pages/Home";
 import styles from "./todolist.module.scss";
 
 type Props = {
-  categoly: string;
+  category: string;
   setTodos: Dispatch<SetStateAction<Todo[]>>;
   targetTodoId: number;
   isFinished: boolean;
 };
 
 export const PulldownMenu = (props: Props) => {
-  const { categoly, setTodos, targetTodoId, isFinished } = props;
+  const { category, setTodos, targetTodoId, isFinished } = props;
   //プルダウンメニューのcategolyが選ばれる
-  const [selectedCategoly, setSelectedCategoly] = useState<string>(URGENT);
+  const [selectedCategory, setSelectedCategory] = useState<string>(URGENT);
 
   const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCategoly(e.target.value);
+    setSelectedCategory(e.target.value);
   };
 
-  const ChangeCategoly = () => {
+  const changeCategoly = () => {
     setTodos((todos) => {
       return todos.map((todo) => {
         if (todo.id === targetTodoId) {
           return {
             ...todo,
-            categoly: (todo.categoly = selectedCategoly),
+            category: (todo.category = selectedCategory),
           };
         }
         return todo;
@@ -35,19 +35,19 @@ export const PulldownMenu = (props: Props) => {
   return (
     <>
       <select
-        key={categoly}
+        key={category}
         disabled={isFinished}
-        value={selectedCategoly}
+        value={selectedCategory}
         onChange={handleSelect}
         className={styles.select_menu}
       >
-        {categolies.map((categoly) => {
-          return <option key={categoly}>{categoly}</option>;
+        {categories.map((category) => {
+          return <option key={category}>{category}</option>;
         })}
       </select>
       <button
         className={styles.move_button}
-        onClick={() => ChangeCategoly()}
+        onClick={() => changeCategoly()}
         disabled={isFinished}
       >
         へ移動

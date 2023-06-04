@@ -1,33 +1,35 @@
 import React, { ChangeEvent, Dispatch, SetStateAction } from "react";
 import styles from "./todolist.module.scss";
-import { categolies } from "../../../pages/Home";
+import { categories } from "../../../pages/Home";
 
 type Props = {
-  radioCategoly: string;
-  setRadioCategoly: Dispatch<SetStateAction<string>>;
+  radioCategory: string;
+  setRadioCategory: Dispatch<SetStateAction<string>>;
 };
 
 export const RadioBtn = (props: Props) => {
-  const { radioCategoly, setRadioCategoly } = props;
+  const { radioCategory, setRadioCategory } = props;
 
   const onChangeRadioBtn = (e: ChangeEvent<HTMLInputElement>): void => {
-    setRadioCategoly(e.target.value);
+    setRadioCategory(e.target.value);
   };
   return (
     <>
-      {categolies.map((categoly, index) => {
+      {categories.map((category, index) => {
         return (
-          <div className={styles.radio_button_area} key={index}>
-            <input
-              type="radio"
-              value={categoly}
-              onChange={onChangeRadioBtn}
-              checked={categoly === radioCategoly}
-              className={styles.r_input}
-            />
-            <label className={styles.r_label} htmlFor={categoly}>
-              {categoly}
-            </label>
+          <div className={styles.radio_buttons}>
+            <div className={styles.radio_buttons} key={index}>
+              <input
+                type="radio"
+                value={category}
+                onChange={onChangeRadioBtn}
+                checked={category === radioCategory}
+                className={styles.r_input}
+              />
+              <label className={styles.r_label} htmlFor={category}>
+                {category}
+              </label>
+            </div>
           </div>
         );
       })}

@@ -16,7 +16,7 @@ export type Event = {
 export type Todo = {
   id: number;
   title: string;
-  categoly: string;
+  category: string;
   isFinished: boolean;
   requested: boolean;
 };
@@ -28,7 +28,7 @@ export const AFTERNOON = "午後";
 export const REQUESTED = "依頼中";
 export const WANT_TO_REQUEST = "依頼する";
 
-export const categolies = [URGENT, MORNING, AFTERNOON];
+export const categories = [URGENT, MORNING, AFTERNOON];
 
 export const Home = () => {
   return (

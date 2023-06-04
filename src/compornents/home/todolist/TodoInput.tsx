@@ -8,11 +8,11 @@ type Props = {
   setText: Dispatch<SetStateAction<string>>;
   todos: Todo[];
   setTodos: Dispatch<SetStateAction<Todo[]>>;
-  radioCategoly: string;
+  radioCategory: string;
 };
 
 export const TodoInput = (props: Props) => {
-  const { text, setText, todos, setTodos, radioCategoly } = props;
+  const { text, setText, todos, setTodos, radioCategory } = props;
   const date = new Date();
   const createdDate: number = date.getTime();
   const textRef = useRef<HTMLInputElement>(null!);
@@ -22,7 +22,7 @@ export const TodoInput = (props: Props) => {
     const newTodo: Todo = {
       id: createdDate,
       title: textRef.current.value,
-      categoly: radioCategoly,
+      category: radioCategory,
       isFinished: false,
       requested: false,
     };

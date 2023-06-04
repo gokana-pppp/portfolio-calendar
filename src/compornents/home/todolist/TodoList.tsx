@@ -6,7 +6,7 @@ import { List } from "./List";
 import { Todo, URGENT, MORNING, AFTERNOON } from "../../../pages/Home";
 
 export const TodoList = () => {
-  const [radioCategoly, setRadioCategoly] = useState<string>("午前");
+  const [radioCategory, setRadioCategory] = useState<string>("午前");
   const [todos, setTodos] = useState<Todo[]>([]);
   const [text, setText] = useState<string>("");
 
@@ -15,24 +15,22 @@ export const TodoList = () => {
       <div className={styles.title}>
         <p>Todoリスト</p>
       </div>
-
       <TodoInput
         text={text}
         setText={setText}
         todos={todos}
         setTodos={setTodos}
-        radioCategoly={radioCategoly}
+        radioCategory={radioCategory}
       />
-      <div className={styles.radio_buttons}>
+      <div className={styles.radio_buttons_area}>
         <RadioBtn
-          radioCategoly={radioCategoly}
-          setRadioCategoly={setRadioCategoly}
+          radioCategory={radioCategory}
+          setRadioCategory={setRadioCategory}
         />
       </div>
-
-      <List categoly={URGENT} todos={todos} setTodos={setTodos} />
-      <List categoly={MORNING} todos={todos} setTodos={setTodos} />
-      <List categoly={AFTERNOON} todos={todos} setTodos={setTodos} />
+      <List category={URGENT} todos={todos} setTodos={setTodos} />
+      <List category={MORNING} todos={todos} setTodos={setTodos} />
+      <List category={AFTERNOON} todos={todos} setTodos={setTodos} />
     </div>
   );
 };
