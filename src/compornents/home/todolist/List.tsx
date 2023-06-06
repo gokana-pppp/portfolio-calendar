@@ -4,6 +4,7 @@ import { Todo, REQUESTED, WANT_TO_REQUEST } from "../../../pages/Home";
 import { Checkbox } from "./Checkbox";
 import { RequestBtn } from "./RequestBtn";
 import { PulldownMenu } from "./PulldownMenu";
+import { DeleteBtn } from "./DeleteBtn";
 
 type Props = {
   category: string;
@@ -48,7 +49,7 @@ export const List = (props: Props) => {
                     </label>
                   </td>
                   <th>
-                    <button className={styles.ta_button}>削除</button>
+                    <DeleteBtn setTodos={setTodos} targetTodoId={todo.id} />
                     <RequestBtn
                       setTodos={setTodos}
                       targetTodoId={todo.id}
