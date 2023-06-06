@@ -14,7 +14,7 @@ export type Event = {
 };
 
 export type Todo = {
-  id: number;
+  id: string;
   title: string;
   category: string;
   isFinished: boolean;

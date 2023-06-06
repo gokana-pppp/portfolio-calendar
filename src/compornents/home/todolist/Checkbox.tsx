@@ -3,12 +3,10 @@ import { Todo } from "../../../pages/Home";
 
 type Props = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
-  targetTodoId: number;
+  targetTodoId: string;
   isFinished: boolean;
 };
-/**
- * チェックボックスを押すと
- * todo.isFinishedがtrueになります */
+/**　チェックボックスのコンポーネント */
 
 export const Checkbox = (props: Props) => {
   const { setTodos, targetTodoId, isFinished } = props;

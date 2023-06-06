@@ -4,12 +4,10 @@ import styles from "./todolist.module.scss";
 
 type Props = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
-  targetTodoId: number;
+  targetTodoId: string;
 };
 
-/**
- * 削除ボタンを押すと、
- * todoが削除されます。*/
+/**　削除ボタンのコンポーネント　*/
 
 export const DeleteBtn = (props: Props) => {
   const { setTodos, targetTodoId } = props;

@@ -2,6 +2,7 @@ import React, { ChangeEvent, useRef, Dispatch, SetStateAction } from "react";
 
 import styles from "./todolist.module.scss";
 import { Todo } from "../../../pages/Home";
+import { v4 as uuidv4 } from "uuid";
 
 type Props = {
   text: string;
@@ -11,21 +12,19 @@ type Props = {
   radioCategory: string;
 };
 
-/**
- * input内のテキストをtodo.titleに入れて
- * 新規todoを作成します。
+/**　新規todo.titleを入力するinputと
+ * 　追加ボタンのコンポーネント
  */
 
 export const TodoInput = (props: Props) => {
   const { text, setText, todos, setTodos, radioCategory } = props;
-  const date = new Date();
-  const createdDate: number = date.getTime();
+  const uuid = uuidv4();
   const textRef = useRef<HTMLInputElement>(null!);
 
   const addTodo = (): void => {
     if (text === "") return;
     const newTodo: Todo = {
-      id: createdDate,
+      id: uuid,
       title: textRef.current.value,
       category: radioCategory,
       isFinished: false,

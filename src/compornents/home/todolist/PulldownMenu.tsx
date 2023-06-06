@@ -5,14 +5,12 @@ import styles from "./todolist.module.scss";
 type Props = {
   category: string;
   setTodos: Dispatch<SetStateAction<Todo[]>>;
-  targetTodoId: number;
+  targetTodoId: string;
   isFinished: boolean;
 };
 
-/**
- * プルダウンメニューで変更したいcategoryを選び、
- * 移動ボタンで実行します。
- */
+/**　カテゴリーを選択する
+ *   プルダウンメニューのコンポーネント　*/
 
 export const PulldownMenu = (props: Props) => {
   const { category, setTodos, targetTodoId, isFinished } = props;
