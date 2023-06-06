@@ -9,6 +9,10 @@ type Props = {
   isFinished: boolean;
 };
 
+/**
+ * 依頼ボタンを押すと、todo.requestedが
+ * trueに変わります。*/
+
 export const RequestBtn = (props: Props) => {
   const { setTodos, targetTodoId, BtnMessage, isFinished } = props;
 

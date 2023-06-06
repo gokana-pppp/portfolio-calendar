@@ -9,6 +9,11 @@ type Props = {
   isFinished: boolean;
 };
 
+/**
+ * プルダウンメニューで変更したいcategoryを選び、
+ * 移動ボタンで実行します。
+ */
+
 export const PulldownMenu = (props: Props) => {
   const { category, setTodos, targetTodoId, isFinished } = props;
   //プルダウンメニューのcategolyが選ばれる

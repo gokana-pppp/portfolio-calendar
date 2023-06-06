@@ -7,6 +7,10 @@ type Props = {
   setRadioCategory: Dispatch<SetStateAction<string>>;
 };
 
+/**
+ * categories = [URGENT, MORNING, AFTERNOON] の３つを
+ * １つずつradioボタンとして表示させます。*/
+
 export const RadioBtn = (props: Props) => {
   const { radioCategory, setRadioCategory } = props;
 

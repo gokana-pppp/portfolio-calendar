@@ -6,6 +6,9 @@ type Props = {
   targetTodoId: number;
   isFinished: boolean;
 };
+/**
+ * チェックボックスを押すと
+ * todo.isFinishedがtrueになります */
 
 export const Checkbox = (props: Props) => {
   const { setTodos, targetTodoId, isFinished } = props;

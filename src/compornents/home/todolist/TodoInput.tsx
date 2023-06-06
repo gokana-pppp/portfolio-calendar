@@ -11,6 +11,11 @@ type Props = {
   radioCategory: string;
 };
 
+/**
+ * input内のテキストをtodo.titleに入れて
+ * 新規todoを作成します。
+ */
+
 export const TodoInput = (props: Props) => {
   const { text, setText, todos, setTodos, radioCategory } = props;
   const date = new Date();
