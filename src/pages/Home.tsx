@@ -6,11 +6,8 @@ import styles from "./home.module.scss";
 export type Event = {
   title: string;
   start: string;
-  id: number;
-  status: "作業中" | "完了";
-  extendedProps: {
-    deadline: string;
-  };
+  id: string;
+  isFinished: boolean;
 };
 
 export type Todo = {
@@ -38,9 +35,6 @@ export const Home = () => {
       </div>
       <div className={styles.todo_list}>
         <TodoList />
-      </div>
-      <div className={styles.input_text_area}>
-        {/* <InputTextArea />が入る予定 */}
       </div>
     </div>
   );
