@@ -12,8 +12,9 @@ type Props = {
   radioCategory: string;
 };
 
-/**　新規todo.titleを入力するinputと
- * 　追加ボタンのコンポーネント
+/**
+ * 新規todo.titleを入力するinputと
+ * 追加ボタンのコンポーネント
  */
 
 export const TodoInput = (props: Props) => {

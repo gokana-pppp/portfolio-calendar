@@ -9,8 +9,10 @@ type Props = {
   isFinished: boolean;
 };
 
-/**　カテゴリーを選択する
- *   プルダウンメニューのコンポーネント　*/
+/**
+ * カテゴリーを選択する
+ * プルダウンメニューのコンポーネント
+ * */
 
 export const PulldownMenu = (props: Props) => {
   const { category, setTodos, targetTodoId, isFinished } = props;
