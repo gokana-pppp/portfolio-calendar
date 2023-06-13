@@ -7,11 +7,12 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { AddEventArea } from "./AddEventArea";
 import { Event } from "pages/Home";
 import styles from "./calendar.module.scss";
+import { timeZones } from "./TimeSelection";
 
 export const MyCalendar = () => {
   const [date, setDate] = useState<string>("");
   const [events, setEvents] = useState<Event[]>([]);
-  const [selectedTime, setSelectedTime] = useState<string>("10:00");
+  const [selectedTime, setSelectedTime] = useState<string>(timeZones[0]);
 
   /** クリックしたカレンダーの日付をdateにセットする */
   const handleDateClick = (info: any) => {
@@ -19,7 +20,7 @@ export const MyCalendar = () => {
   };
 
   /** カレンダーに表示するためにeventを変形する */
-  const displayEvents = events.map((event) => ({
+  const displayedEvents = events.map((event) => ({
     title: event.title,
     start: event.start,
   }));
@@ -31,7 +32,7 @@ export const MyCalendar = () => {
           plugins={[dayGridPlugin, interactionPlugin]}
           initialView="dayGridMonth"
           selectable={true}
-          events={displayEvents}
+          events={displayedEvents}
           dateClick={handleDateClick}
           locale="ja"
           contentHeight="auto"

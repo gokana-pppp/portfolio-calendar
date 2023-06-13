@@ -10,7 +10,7 @@ type Props = {
  */
 export const DateSelection = (props: Props) => {
   const { date } = props;
-  if (date === "") return <p>日付をクリックしてください</p>;
+  if (date === "") return <p>カレンダーの日付をクリックしてください</p>;
 
   const DateArr = date.split("-");
   const SelectedMonth = Number(DateArr[1]);

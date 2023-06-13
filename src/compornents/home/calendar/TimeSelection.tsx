@@ -6,23 +6,24 @@ type Props = {
   setSelectedTime: Dispatch<SetStateAction<string>>;
 };
 
+export const timeZones = [
+  "10:00",
+  "11:00",
+  "12:00",
+  "13:00",
+  "14:00",
+  "15:00",
+  "16:00",
+  "17:00",
+  "18:00",
+];
+
 /**
  * 新規作成のevent.startを設定するための
  * プルダウンメニューのコンポーネント
  */
 export const TimeSelection = (props: Props) => {
   const { selectedTime, setSelectedTime } = props;
-  const timeZones = [
-    "10:00",
-    "11:00",
-    "12:00",
-    "13:00",
-    "14:00",
-    "15:00",
-    "16:00",
-    "17:00",
-    "18:00",
-  ];
 
   const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedTime(e.target.value);
