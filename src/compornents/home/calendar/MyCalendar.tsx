@@ -5,14 +5,14 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
 import { AddEventArea } from "./AddEventArea";
-import { Event } from "pages/Home";
+import { Event, DisplayedEvent } from "pages/Home";
 import styles from "./calendar.module.scss";
-import { timeZones } from "./TimeSelection";
 
 export const MyCalendar = () => {
   const [date, setDate] = useState<string>("");
   const [events, setEvents] = useState<Event[]>([]);
-  const [selectedTime, setSelectedTime] = useState<string>(timeZones[0]);
+  const [selectedHour, setSelectedHour] = useState<string>("");
+  const [selectedMinute, setSelectedMinute] = useState<string>("00");
 
   /** クリックしたカレンダーの日付をdateにセットする */
   const handleDateClick = (info: any) => {
@@ -20,9 +20,13 @@ export const MyCalendar = () => {
   };
 
   /** カレンダーに表示するためにeventを変形する */
-  const displayedEvents = events.map((event) => ({
+  const displayedEvents: DisplayedEvent[] = events.map((event) => ({
     title: event.title,
     start: event.start,
+    extendedProps: {
+      id: event.id,
+      startTime: event.startTime,
+    },
   }));
 
   return (
@@ -36,12 +40,12 @@ export const MyCalendar = () => {
           dateClick={handleDateClick}
           locale="ja"
           contentHeight="auto"
-          eventDisplay="block"
           headerToolbar={{
             start: "prev",
             center: "title",
             end: "next",
           }}
+          eventTimeFormat={{ hour: "numeric", minute: "2-digit" }}
         />
       </div>
       <div className={styles.input_text_area}>
@@ -49,8 +53,10 @@ export const MyCalendar = () => {
           date={date}
           events={events}
           setEvents={setEvents}
-          selectedTime={selectedTime}
-          setSelectedTime={setSelectedTime}
+          selectedHour={selectedHour}
+          setSelectedHour={setSelectedHour}
+          selectedMinute={selectedMinute}
+          setSelectedMinute={setSelectedMinute}
         />
       </div>
     </>

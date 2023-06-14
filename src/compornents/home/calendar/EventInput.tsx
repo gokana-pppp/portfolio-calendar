@@ -7,8 +7,10 @@ type Props = {
   text: string;
   setText: Dispatch<SetStateAction<string>>;
   date: string;
-  selectedTime: string;
-  setSelectedTime: Dispatch<SetStateAction<string>>;
+  selectedHour: string;
+  setSelectedHour: Dispatch<SetStateAction<string>>;
+  selectedMinute: string;
+  setSelectedMinute: Dispatch<SetStateAction<string>>;
   events: Event[];
   setEvents: Dispatch<SetStateAction<Event[]>>;
 };
@@ -23,8 +25,10 @@ export const EventInput = (props: Props) => {
     text,
     setText,
     date,
-    selectedTime,
-    setSelectedTime,
+    selectedHour,
+    setSelectedHour,
+    selectedMinute,
+    setSelectedMinute,
     events,
     setEvents,
   } = props;
@@ -35,19 +39,35 @@ export const EventInput = (props: Props) => {
   };
 
   const uuid = uuidv4();
-  const startDate = date + "T" + selectedTime + ":00";
+  const startDateAndTime = date + "T" + selectedHour + selectedMinute;
 
+  /**
+   * 終日が選択されていたら　newAllDayEventが作成される
+   * 時間が選択されていたら　newEventが作成される
+   */
   const addEvent = (): void => {
     if (text === "" || date === "") return;
-    const newEvent: Event = {
-      title: text,
-      start: startDate,
-      id: uuid,
-      isFinished: false,
-    };
-    setEvents([...events, newEvent]);
-    setText("");
-    setSelectedTime("10:00");
+    if (selectedHour === "") {
+      const newAllDayEvent: Event = {
+        title: text,
+        start: date,
+        id: uuid,
+        startTime: date + selectedHour + selectedMinute,
+      };
+      setEvents([...events, newAllDayEvent]);
+      setText("");
+    } else {
+      const newEvent: Event = {
+        title: text,
+        start: startDateAndTime,
+        id: uuid,
+        startTime: date + selectedHour + selectedMinute,
+      };
+      setEvents([...events, newEvent]);
+      setText("");
+      setSelectedHour("");
+      setSelectedMinute("00");
+    }
   };
 
   return (

@@ -9,8 +9,10 @@ export type Props = {
   date: string;
   events: Event[];
   setEvents: Dispatch<SetStateAction<Event[]>>;
-  selectedTime: string;
-  setSelectedTime: Dispatch<SetStateAction<string>>;
+  selectedHour: string;
+  setSelectedHour: Dispatch<SetStateAction<string>>;
+  selectedMinute: string;
+  setSelectedMinute: Dispatch<SetStateAction<string>>;
 };
 
 /**
@@ -20,22 +22,34 @@ export type Props = {
 
 export const AddEventArea = (props: Props) => {
   const [text, setText] = useState("");
-  const { date, events, setEvents, selectedTime, setSelectedTime } = props;
+  const {
+    date,
+    events,
+    setEvents,
+    selectedHour,
+    setSelectedHour,
+    selectedMinute,
+    setSelectedMinute,
+  } = props;
 
   return (
     <>
       <DateSelection date={date} />
       <div className={styles.event_input_area}>
         <TimeSelection
-          selectedTime={selectedTime}
-          setSelectedTime={setSelectedTime}
+          selectedHour={selectedHour}
+          setSelectedHour={setSelectedHour}
+          selectedMinute={selectedMinute}
+          setSelectedMinute={setSelectedMinute}
         />
         <EventInput
           text={text}
           setText={setText}
           date={date}
-          selectedTime={selectedTime}
-          setSelectedTime={setSelectedTime}
+          selectedHour={selectedHour}
+          setSelectedHour={setSelectedHour}
+          selectedMinute={selectedMinute}
+          setSelectedMinute={setSelectedMinute}
           events={events}
           setEvents={setEvents}
         />

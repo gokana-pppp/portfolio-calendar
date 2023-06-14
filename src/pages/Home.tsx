@@ -3,11 +3,22 @@ import { MyCalendar } from "compornents/home/calendar/MyCalendar";
 import { TodoList } from "compornents/home/todolist/TodoList";
 import styles from "./home.module.scss";
 
+// Eventの型変更
 export type Event = {
   title: string;
   start: string;
   id: string;
-  isFinished: boolean;
+  startTime: string; //次回実装予定のポップアップメニュー実装時に使うため　追加
+};
+
+// カレンダーに表示する時にEventを変形する
+export type DisplayedEvent = {
+  title: string;
+  start: string;
+  extendedProps: {
+    id: string; //次回実装予定のポップアップメニュー実装時に使う
+    startTime: string; //次回実装予定のポップアップメニュー実装時に使う
+  };
 };
 
 export type Todo = {
