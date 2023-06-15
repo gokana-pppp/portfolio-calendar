@@ -21,6 +21,13 @@ export type DisplayedEvent = {
   };
 };
 
+// カレンダー上のクリックされたEventをポップアップウィンドウで表示しやすいように変形する
+export type SelectedEvent = {
+  title: string;
+  id: string;
+  startTime: string;
+};
+
 export type Todo = {
   id: string;
   title: string;
