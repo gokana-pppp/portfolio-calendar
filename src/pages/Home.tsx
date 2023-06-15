@@ -8,7 +8,7 @@ export type Event = {
   title: string;
   start: string;
   id: string;
-  startTime: string; //次回実装予定のポップアップメニュー実装時に使うため　追加
+  startTime: string;
 };
 
 // カレンダーに表示する時にEventを変形する
@@ -16,8 +16,8 @@ export type DisplayedEvent = {
   title: string;
   start: string;
   extendedProps: {
-    id: string; //次回実装予定のポップアップメニュー実装時に使う
-    startTime: string; //次回実装予定のポップアップメニュー実装時に使う
+    id: string;
+    startTime: string;
   };
 };
 
