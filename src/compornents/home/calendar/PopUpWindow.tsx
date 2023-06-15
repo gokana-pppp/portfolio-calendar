@@ -21,7 +21,7 @@ export const PopUpWindow = (props: Props) => {
    * ポップアップウィンドウを閉じた時
    * クリックしたeventを入れるselectedEventも空にする
    */
-  const CloseModal = () => {
+  const ClosePopUpWindow = () => {
     setDisplayPopUp(false);
     setSelectedEvent([]);
   };
@@ -70,7 +70,7 @@ export const PopUpWindow = (props: Props) => {
             </div>
             <button
               className={styles.modal_close_button}
-              onClick={() => CloseModal()}
+              onClick={() => ClosePopUpWindow()}
             >
               close
             </button>

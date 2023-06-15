@@ -34,7 +34,7 @@ export const MyCalendar = () => {
     },
   }));
 
-  const openModal = () => {
+  const openPopUpWindow = () => {
     setDisplayPopUp(true);
   };
 
@@ -60,7 +60,7 @@ export const MyCalendar = () => {
           }}
           eventTimeFormat={{ hour: "numeric", minute: "2-digit" }}
           eventClick={(e) => {
-            openModal();
+            openPopUpWindow();
             handleEventClick([
               ...selectedEvent,
               {
