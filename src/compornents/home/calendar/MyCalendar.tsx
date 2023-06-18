@@ -77,6 +77,7 @@ export const MyCalendar = () => {
             setDisplayPopUp={setDisplayPopUp}
             selectedEvent={selectedEvent}
             setSelectedEvent={setSelectedEvent}
+            setEvents={setEvents}
           />
         </div>
       </div>
