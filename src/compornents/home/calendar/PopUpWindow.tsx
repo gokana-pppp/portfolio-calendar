@@ -19,7 +19,7 @@ export const PopUpWindow = (props: Props) => {
 
   /**
    * ポップアップウィンドウを閉じた時
-   * クリックしたeventを入れるselectedEventも空にする
+   * selectedEventを空にする
    */
   const ClosePopUpWindow = () => {
     setDisplayPopUp(false);

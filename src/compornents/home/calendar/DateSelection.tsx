@@ -6,7 +6,8 @@ type Props = {
 };
 
 /**
- * クリックされたカレンダー上の日付を<p>◯月◯日</p> で表示させる
+ * クリックされたカレンダー上の日付を
+ * <p>◯月◯日</p> で表示させる
  */
 export const DateSelection = (props: Props) => {
   const { date } = props;
