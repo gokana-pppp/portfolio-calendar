@@ -1,12 +1,13 @@
 import React, { Dispatch, SetStateAction } from "react";
 import styles from "./calendar.module.scss";
-import { SelectedEvent } from "pages/Home";
+import { SelectedEvent, Event } from "pages/Home";
 
 type Props = {
   displayPopUp: boolean;
   setDisplayPopUp: Dispatch<SetStateAction<boolean>>;
   selectedEvent: SelectedEvent[];
   setSelectedEvent: Dispatch<SetStateAction<SelectedEvent[]>>;
+  setEvents: Dispatch<SetStateAction<Event[]>>;
 };
 
 /**
@@ -14,8 +15,13 @@ type Props = {
  * 表示されるポップアップウィンドウのコンポーネント
  */
 export const PopUpWindow = (props: Props) => {
-  const { displayPopUp, setDisplayPopUp, selectedEvent, setSelectedEvent } =
-    props;
+  const {
+    displayPopUp,
+    setDisplayPopUp,
+    selectedEvent,
+    setSelectedEvent,
+    setEvents,
+  } = props;
 
   /**
    * ポップアップウィンドウを閉じた時
@@ -24,6 +30,11 @@ export const PopUpWindow = (props: Props) => {
   const ClosePopUpWindow = () => {
     setDisplayPopUp(false);
     setSelectedEvent([]);
+  };
+
+  const deleteEvent = (targetEventId: string) => {
+    setEvents((events) => events.filter((event) => event.id !== targetEventId));
+    ClosePopUpWindow();
   };
 
   /**
@@ -63,7 +74,7 @@ export const PopUpWindow = (props: Props) => {
                   <div key={event.id}>
                     {DisplayCustomDate(event.startTime)}
                     <p>タイトル：{event.title}</p>
-                    <button>削除</button>
+                    <button onClick={() => deleteEvent(event.id)}>削除</button>
                   </div>
                 );
               })}
