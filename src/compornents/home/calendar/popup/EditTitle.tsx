@@ -5,6 +5,7 @@ type Props = {
   title: string;
 };
 
+/**　タイトルを編集するためのコンポーネント　*/
 export const EditTitle = (props: Props) => {
   const { title } = props;
   const [editedText, setEditedText] = useState<string>(title);

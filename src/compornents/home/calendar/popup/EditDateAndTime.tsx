@@ -6,6 +6,11 @@ type Props = {
   start: string;
 };
 
+/**
+ * 時間指定イベントの時に表示される
+ * 日付と時間を変更するコンポーネント
+ */
+
 export const EditDateAndTime = (props: Props) => {
   const { start } = props;
 

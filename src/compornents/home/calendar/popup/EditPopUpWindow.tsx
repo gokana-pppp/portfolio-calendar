@@ -11,6 +11,10 @@ type Props = {
   onClick: () => void;
 };
 
+/**
+ * ポップアップウィンドウの編集ボタンを押すと
+ * 表示される画面のコンポーネント
+ */
 export const EditPopUpWindow = (props: Props) => {
   const { isEditable, selectedEvent, onClick } = props;
   return (

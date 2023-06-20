@@ -6,6 +6,11 @@ type Props = {
   end: string;
 };
 
+/**
+ * 終日イベントの時に表示される
+ * 開始日、終了日を変更するコンポーネント
+ */
+
 export const EditDate = (props: Props) => {
   const { start, end } = props;
   const [editedStartDate, setEditedStartDate] = useState<string>(start);
