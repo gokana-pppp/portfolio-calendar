@@ -8,25 +8,25 @@ type Props = {
   setSelectedMinute: Dispatch<SetStateAction<string>>;
 };
 
-const optionsOfHour = [
-  { value: "", lavel: "終日" },
-  { value: "08", lavel: "8" },
-  { value: "09", lavel: "9" },
-  { value: "10", lavel: "10" },
-  { value: "11", lavel: "11" },
-  { value: "12", lavel: "12" },
-  { value: "13", lavel: "13" },
-  { value: "14", lavel: "14" },
-  { value: "15", lavel: "15" },
-  { value: "16", lavel: "16" },
-  { value: "17", lavel: "17" },
-  { value: "18", lavel: "18" },
+export const optionsOfHour = [
+  { value: "", label: "終日" },
+  { value: "08", label: "8" },
+  { value: "09", label: "9" },
+  { value: "10", label: "10" },
+  { value: "11", label: "11" },
+  { value: "12", label: "12" },
+  { value: "13", label: "13" },
+  { value: "14", label: "14" },
+  { value: "15", label: "15" },
+  { value: "16", label: "16" },
+  { value: "17", label: "17" },
+  { value: "18", label: "18" },
 ];
-const optionsOfMinute = [
-  { value: "00", lavel: "00" },
-  { value: "15", lavel: "15" },
-  { value: "30", lavel: "30" },
-  { value: "45", lavel: "45" },
+export const optionsOfMinute = [
+  { value: "00", label: "00" },
+  { value: "15", label: "15" },
+  { value: "30", label: "30" },
+  { value: "45", label: "45" },
 ];
 
 /**
@@ -55,7 +55,7 @@ export const TimeSelection = (props: Props) => {
         {optionsOfHour.map((hour) => {
           return (
             <option key={hour.value} value={hour.value}>
-              {hour.lavel}
+              {hour.label}
             </option>
           );
         })}
@@ -74,7 +74,7 @@ export const TimeSelection = (props: Props) => {
             {optionsOfMinute.map((minute) => {
               return (
                 <option key={minute.value} value={minute.value}>
-                  {minute.lavel}
+                  {minute.label}
                 </option>
               );
             })}

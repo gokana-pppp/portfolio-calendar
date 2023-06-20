@@ -51,8 +51,11 @@ export const EventInput = (props: Props) => {
       const newAllDayEvent: Event = {
         title: text,
         start: date,
-        id: uuid,
+        end: date,
         startTime: date + selectedHour + selectedMinute,
+        endTime: date + selectedHour + selectedMinute,
+        id: uuid,
+        allDay: true,
       };
       setEvents([...events, newAllDayEvent]);
       setText("");
@@ -60,8 +63,11 @@ export const EventInput = (props: Props) => {
       const newEvent: Event = {
         title: text,
         start: startDateAndTime,
-        id: uuid,
+        end: startDateAndTime,
         startTime: date + selectedHour + selectedMinute,
+        endTime: date + selectedHour + selectedMinute,
+        id: uuid,
+        allDay: false,
       };
       setEvents([...events, newEvent]);
       setText("");

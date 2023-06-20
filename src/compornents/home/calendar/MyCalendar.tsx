@@ -7,7 +7,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { AddEventArea } from "./AddEventArea";
 import { Event, DisplayedEvent, SelectedEvent } from "pages/Home";
 import styles from "./calendar.module.scss";
-import { PopUpWindow } from "./PopUpWindow";
+import { PopUpWindow } from "./popup/PopUpWindow";
 
 export const MyCalendar = () => {
   const [date, setDate] = useState<string>("");
@@ -28,9 +28,12 @@ export const MyCalendar = () => {
   const displayedEvents: DisplayedEvent[] = events.map((event) => ({
     title: event.title,
     start: event.start,
+    end: event.end,
     extendedProps: {
       id: event.id,
       startTime: event.startTime,
+      endTime: event.endTime,
+      allDay: event.allDay,
     },
   }));
 
@@ -67,6 +70,10 @@ export const MyCalendar = () => {
                 title: e.event.title,
                 id: e.event.extendedProps.id,
                 startTime: e.event.extendedProps.startTime,
+                start: e.event.start,
+                end: e.event.end,
+                endTime: e.event.extendedProps.endTime,
+                allDay: e.event.extendedProps.allDay,
               },
             ]);
           }}

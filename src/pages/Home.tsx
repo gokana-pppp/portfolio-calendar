@@ -7,17 +7,23 @@ import styles from "./home.module.scss";
 export type Event = {
   title: string;
   start: string;
+  end: string;
   id: string;
   startTime: string;
+  endTime: string;
+  allDay: boolean;
 };
 
 // カレンダーに表示する時にEventを変形する
 export type DisplayedEvent = {
   title: string;
   start: string;
+  end: string;
   extendedProps: {
     id: string;
     startTime: string;
+    endTime: string;
+    allDay: boolean;
   };
 };
 
@@ -26,6 +32,10 @@ export type SelectedEvent = {
   title: string;
   id: string;
   startTime: string;
+  start: Date | null;
+  endTime: string;
+  end: Date | null;
+  allDay: boolean;
 };
 
 export type Todo = {
