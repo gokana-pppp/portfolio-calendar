@@ -1,5 +1,5 @@
-import React from "react";
-import { SelectedEvent } from "pages/Home";
+import React, { Dispatch, SetStateAction } from "react";
+import { SelectedEvent, Event } from "pages/Home";
 import { EditDate } from "./EditDate";
 import { EditDateAndTime } from "./EditDateAndTime";
 import { EditTitle } from "./EditTitle";
@@ -9,6 +9,8 @@ type Props = {
   isEditable: boolean;
   selectedEvent: SelectedEvent[];
   onClick: () => void;
+  setEvents: Dispatch<SetStateAction<Event[]>>;
+  setSelectedEvent: Dispatch<SetStateAction<SelectedEvent[]>>;
 };
 
 /**
@@ -16,7 +18,8 @@ type Props = {
  * 表示される画面のコンポーネント
  */
 export const EditPopUpWindow = (props: Props) => {
-  const { isEditable, selectedEvent, onClick } = props;
+  const { isEditable, selectedEvent, onClick, setEvents, setSelectedEvent } =
+    props;
   return (
     <>
       {selectedEvent.map((event) => {
@@ -33,7 +36,12 @@ export const EditPopUpWindow = (props: Props) => {
                   <EditDateAndTime start={event.startTime.slice(0, 10)} />
                 )}
 
-                <EditTitle title={event.title} />
+                <EditTitle
+                  title={event.title}
+                  targetEventId={event.id}
+                  setEvents={setEvents}
+                  setSelectedEvent={setSelectedEvent}
+                />
                 <div>
                   <button
                     className={styles.modal_close_button}

@@ -89,6 +89,8 @@ export const PopUpWindow = (props: Props) => {
                 isEditable={isEditable}
                 selectedEvent={selectedEvent}
                 onClick={() => ClosePopUpWindow()}
+                setEvents={setEvents}
+                setSelectedEvent={setSelectedEvent}
               />
               {isEditable ? (
                 <></>
