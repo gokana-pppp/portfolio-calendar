@@ -31,6 +31,9 @@ export const EditPopUpWindow = (props: Props) => {
                   <EditDate
                     start={event.startTime.slice(0, 10)}
                     end={event.endTime.slice(0, 10)}
+                    setEvents={setEvents}
+                    setSelectedEvent={setSelectedEvent}
+                    targetEventId={event.id}
                   />
                 ) : (
                   <EditDateAndTime
