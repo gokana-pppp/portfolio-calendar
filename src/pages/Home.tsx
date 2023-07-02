@@ -12,6 +12,7 @@ export type Event = {
   startTime: string;
   endTime: string;
   allDay: boolean;
+  userId: string;
 };
 
 // カレンダーに表示する時にEventを変形する
@@ -24,6 +25,7 @@ export type DisplayedEvent = {
     startTime: string;
     endTime: string;
     allDay: boolean;
+    userId: string;
   };
 };
 
@@ -36,6 +38,7 @@ export type SelectedEvent = {
   endTime: string;
   end: Date | null;
   allDay: boolean;
+  userId: string;
 };
 
 export type Todo = {
@@ -44,6 +47,7 @@ export type Todo = {
   category: string;
   isFinished: boolean;
   requested: boolean;
+  userId: string;
 };
 
 export const URGENT = "急ぎ";

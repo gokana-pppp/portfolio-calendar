@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState, Dispatch, SetStateAction } from "react";
 import { URGENT, Todo, categories } from "./../../../pages/Home";
 import styles from "./todolist.module.scss";
+import { changeCategoryInSupabase } from "lib/supabaseFunc";
 
 type Props = {
   category: string;
@@ -35,6 +36,7 @@ export const PulldownMenu = (props: Props) => {
         return todo;
       });
     });
+    changeCategoryInSupabase(targetTodoId, selectedCategory);
   };
 
   return (

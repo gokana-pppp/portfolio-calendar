@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Todo } from "../../../pages/Home";
+import { changeIsFinishedStatusInSupabase } from "lib/supabaseFunc";
 
 type Props = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
@@ -23,6 +24,7 @@ export const Checkbox = (props: Props) => {
         return todo;
       });
     });
+    changeIsFinishedStatusInSupabase(targetTodoId, !isFinished);
   };
 
   return (

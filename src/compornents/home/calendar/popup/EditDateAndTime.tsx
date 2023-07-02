@@ -8,6 +8,7 @@ import React, {
 import { optionsOfHour, optionsOfMinute } from "../../calendar/TimeSelection";
 import styles from "./popup.module.scss";
 import { Event, SelectedEvent } from "pages/Home";
+import { changeDateInSupabase } from "lib/supabaseFunc";
 
 type Props = {
   start: string;
@@ -82,6 +83,13 @@ export const EditDateAndTime = (props: Props) => {
         return selectedEvent;
       });
     });
+    changeDateInSupabase(
+      targetEventId,
+      startDateAndTime,
+      startDateAndTime,
+      newSelectedTime,
+      newSelectedTime
+    );
   };
 
   return (

@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import styles from "./popup.module.scss";
 import { SelectedEvent, Event } from "pages/Home";
 import { EditPopUpWindow } from "./EditPopUpWindow";
+import { deleteEventFromSupabase } from "lib/supabaseFunc";
 
 type Props = {
   displayPopUp: boolean;
@@ -43,6 +44,7 @@ export const PopUpWindow = (props: Props) => {
 
   const deleteEvent = (targetEventId: string) => {
     setEvents((events) => events.filter((event) => event.id !== targetEventId));
+    deleteEventFromSupabase(targetEventId);
     ClosePopUpWindow();
   };
 

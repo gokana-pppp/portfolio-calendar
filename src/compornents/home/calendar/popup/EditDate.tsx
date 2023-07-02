@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import styles from "./popup.module.scss";
 import { Event, SelectedEvent } from "pages/Home";
+import { changeDateInSupabase } from "lib/supabaseFunc";
 
 type Props = {
   start: string;
@@ -72,6 +73,13 @@ export const EditDate = (props: Props) => {
         return selectedEvent;
       });
     });
+    changeDateInSupabase(
+      targetEventId,
+      editedStartDate,
+      transformEndDate,
+      editedStartDate,
+      editedEndDate
+    );
   };
 
   /**

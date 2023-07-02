@@ -1,7 +1,15 @@
-import React, { useRef, ChangeEvent, Dispatch, SetStateAction } from "react";
+import React, {
+  useRef,
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useContext,
+} from "react";
 import styles from "./calendar.module.scss";
 import { Event } from "pages/Home";
 import { v4 as uuidv4 } from "uuid";
+import { addEventToSupabase } from "lib/supabaseFunc";
+import { UserIdContext } from "App";
 
 type Props = {
   text: string;
@@ -38,6 +46,8 @@ export const EventInput = (props: Props) => {
     setText(() => e.target.value);
   };
 
+  const { userId } = useContext(UserIdContext);
+
   const uuid = uuidv4();
   const startDateAndTime = date + "T" + selectedHour + selectedMinute;
 
@@ -56,8 +66,10 @@ export const EventInput = (props: Props) => {
         endTime: date + selectedHour + selectedMinute,
         id: uuid,
         allDay: true,
+        userId: userId,
       };
       setEvents([...events, newAllDayEvent]);
+      addEventToSupabase(newAllDayEvent);
       setText("");
     } else {
       const newEvent: Event = {
@@ -68,8 +80,10 @@ export const EventInput = (props: Props) => {
         endTime: date + selectedHour + selectedMinute,
         id: uuid,
         allDay: false,
+        userId: userId,
       };
       setEvents([...events, newEvent]);
+      addEventToSupabase(newEvent);
       setText("");
       setSelectedHour("");
       setSelectedMinute("00");

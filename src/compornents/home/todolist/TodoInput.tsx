@@ -1,8 +1,16 @@
-import React, { ChangeEvent, useRef, Dispatch, SetStateAction } from "react";
+import React, {
+  ChangeEvent,
+  useRef,
+  Dispatch,
+  SetStateAction,
+  useContext,
+} from "react";
 
 import styles from "./todolist.module.scss";
 import { Todo } from "../../../pages/Home";
 import { v4 as uuidv4 } from "uuid";
+import { addTodoToSupabase } from "lib/supabaseFunc";
+import { UserIdContext } from "App";
 
 type Props = {
   text: string;
@@ -21,6 +29,7 @@ export const TodoInput = (props: Props) => {
   const { text, setText, todos, setTodos, radioCategory } = props;
   const uuid = uuidv4();
   const textRef = useRef<HTMLInputElement>(null!);
+  const { userId } = useContext(UserIdContext);
 
   const addTodo = (): void => {
     if (text === "") return;
@@ -30,8 +39,10 @@ export const TodoInput = (props: Props) => {
       category: radioCategory,
       isFinished: false,
       requested: false,
+      userId: userId,
     };
     setTodos([...todos, newTodo]);
+    addTodoToSupabase(newTodo);
     setText("");
   };
 

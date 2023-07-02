@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { Event, SelectedEvent } from "pages/Home";
 import styles from "./popup.module.scss";
+import { changeTitleInSupabase } from "lib/supabaseFunc";
 
 type Props = {
   title: string;
@@ -49,6 +50,7 @@ export const EditTitle = (props: Props) => {
         return selectedEvent;
       });
     });
+    changeTitleInSupabase(targetEventId, editedText);
   };
 
   return (

@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
 import { AddEventArea } from "./AddEventArea";
-import { Event, DisplayedEvent, SelectedEvent } from "pages/Home";
+import { DisplayedEvent, SelectedEvent } from "pages/Home";
 import styles from "./calendar.module.scss";
 import { PopUpWindow } from "./popup/PopUpWindow";
+import { getAllEvents } from "lib/supabaseFunc";
+import { UserIdContext } from "App";
 
 export const MyCalendar = () => {
   const [date, setDate] = useState<string>("");
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<any>([]);
   const [selectedHour, setSelectedHour] = useState<string>("");
   const [selectedMinute, setSelectedMinute] = useState<string>("00");
   // カレンダー上のイベントをクリックしたらselectedEventに設定する
@@ -19,13 +22,24 @@ export const MyCalendar = () => {
   // ポップアップウィンドウを表示するかしないかの管理
   const [displayPopUp, setDisplayPopUp] = useState<boolean>(false);
 
+  const navigate = useNavigate();
+  const { userId } = useContext(UserIdContext);
+
+  useEffect(() => {
+    const getEvents = async () => {
+      const events = await getAllEvents(userId);
+      setEvents(events);
+    };
+    getEvents();
+  }, []);
+
   /** クリックしたカレンダーの日付をdateにセットする */
   const handleDateClick = (info: any) => {
     setDate(info.dateStr);
   };
 
   /** カレンダーに表示するためにeventを変形する */
-  const displayedEvents: DisplayedEvent[] = events.map((event) => ({
+  const displayedEvents: DisplayedEvent[] = events.map((event: any) => ({
     title: event.title,
     start: event.start,
     end: event.end,
@@ -34,6 +48,7 @@ export const MyCalendar = () => {
       startTime: event.startTime,
       endTime: event.endTime,
       allDay: event.allDay,
+      userId: event.userId,
     },
   }));
 
@@ -45,8 +60,17 @@ export const MyCalendar = () => {
     setSelectedEvent(event);
   };
 
+  const handleLogOutButton = () => {
+    navigate("/");
+  };
+
   return (
     <>
+      <div className={styles.logOutButton}>
+        <button className={styles.b} onClick={() => handleLogOutButton()}>
+          ログアウト
+        </button>
+      </div>
       <div>
         <FullCalendar
           plugins={[dayGridPlugin, interactionPlugin]}
@@ -74,6 +98,7 @@ export const MyCalendar = () => {
                 end: e.event.end,
                 endTime: e.event.extendedProps.endTime,
                 allDay: e.event.extendedProps.allDay,
+                userId: e.event.extendedProps.userId,
               },
             ]);
           }}

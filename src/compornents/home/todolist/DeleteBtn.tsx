@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Todo } from "pages/Home";
 import styles from "./todolist.module.scss";
+import { deleteTodoFromSupabase } from "lib/supabaseFunc";
 
 type Props = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
@@ -13,6 +14,7 @@ export const DeleteBtn = (props: Props) => {
   const { setTodos, targetTodoId } = props;
   const deleteTodo = () => {
     setTodos((todos) => todos.filter((todo) => todo.id !== targetTodoId));
+    deleteTodoFromSupabase(targetTodoId);
   };
   return (
     <button className={styles.ta_button} onClick={() => deleteTodo()}>

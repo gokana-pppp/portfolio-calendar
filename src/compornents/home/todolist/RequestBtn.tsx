@@ -1,18 +1,20 @@
 import React, { Dispatch, SetStateAction } from "react";
 import styles from "./todolist.module.scss";
 import { Todo } from "pages/Home";
+import { changeRequestedStatusInSupabase } from "lib/supabaseFunc";
 
 type Props = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
   targetTodoId: string;
   BtnMessage: string;
   isFinished: boolean;
+  requested: boolean;
 };
 
 /**　依頼ボタンのコンポーネント　*/
 
 export const RequestBtn = (props: Props) => {
-  const { setTodos, targetTodoId, BtnMessage, isFinished } = props;
+  const { setTodos, targetTodoId, BtnMessage, isFinished, requested } = props;
 
   const handleRequestBtn = () => {
     setTodos((todos) => {
@@ -26,6 +28,7 @@ export const RequestBtn = (props: Props) => {
         return todo;
       });
     });
+    changeRequestedStatusInSupabase(targetTodoId, !requested);
   };
 
   return (

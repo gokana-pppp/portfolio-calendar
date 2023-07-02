@@ -57,6 +57,7 @@ export const List = (props: Props) => {
                         todo.requested ? REQUESTED : WANT_TO_REQUEST
                       }`}
                       isFinished={todo.isFinished}
+                      requested={todo.requested}
                     />
                     <PulldownMenu
                       category={category}

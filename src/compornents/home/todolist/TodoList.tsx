@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./todolist.module.scss";
 import { RadioBtn } from "./RadioBtn";
 import { TodoInput } from "./TodoInput";
 import { List } from "./List";
-import { Todo, URGENT, MORNING, AFTERNOON } from "../../../pages/Home";
+import { URGENT, MORNING, AFTERNOON } from "../../../pages/Home";
+import { getAllTodos } from "lib/supabaseFunc";
+import { UserIdContext } from "App";
 
 export const TodoList = () => {
   const [radioCategory, setRadioCategory] = useState<string>("午前");
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<any>([]);
   const [text, setText] = useState<string>("");
+  const { userId } = useContext(UserIdContext);
+
+  useEffect(() => {
+    const getTodos = async () => {
+      const todos = await getAllTodos(userId);
+      setTodos(todos);
+    };
+    getTodos();
+  }, []);
 
   return (
     <div className={styles.todo_list}>
