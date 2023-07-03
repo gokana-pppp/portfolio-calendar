@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
 import FullCalendar from "@fullcalendar/react";
@@ -10,7 +10,9 @@ import { DisplayedEvent, SelectedEvent, Event } from "pages/Home";
 import styles from "./calendar.module.scss";
 import { PopUpWindow } from "./popup/PopUpWindow";
 import { getAllEvents } from "lib/supabaseFunc";
-import { UserIdContext } from "App";
+import { userIdState } from "App";
+import { useRecoilState } from "recoil";
+import { guestUserId } from "../../../pages/LogIn";
 
 export const MyCalendar = () => {
   const [date, setDate] = useState<string>("");
@@ -23,7 +25,9 @@ export const MyCalendar = () => {
   const [displayPopUp, setDisplayPopUp] = useState<boolean>(false);
 
   const navigate = useNavigate();
-  const { userId } = useContext(UserIdContext);
+  const [userId, setUserId] = useRecoilState(userIdState);
+
+  setUserId(guestUserId);
 
   const getEvents = async () => {
     const events = await getAllEvents(userId);
@@ -64,6 +68,7 @@ export const MyCalendar = () => {
 
   const handleLogOutButton = () => {
     navigate("/");
+    setUserId("");
   };
 
   return (

@@ -5,13 +5,14 @@ import { TodoInput } from "./TodoInput";
 import { List } from "./List";
 import { URGENT, MORNING, AFTERNOON, Todo } from "../../../pages/Home";
 import { getAllTodos } from "lib/supabaseFunc";
-import { UserIdContext } from "App";
+import { userIdState } from "App";
+import { useRecoilValue } from "recoil";
 
 export const TodoList = () => {
   const [radioCategory, setRadioCategory] = useState<string>("午前");
   const [todos, setTodos] = useState<Todo[]>([]);
   const [text, setText] = useState<string>("");
-  const { userId } = useContext(UserIdContext);
+  const userId = useRecoilValue(userIdState);
 
   const getTodos = async () => {
     const todos = await getAllTodos(userId);

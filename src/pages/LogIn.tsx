@@ -1,19 +1,20 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import { useNavigate } from "react-router";
-import { UserIdContext } from "../App";
+// import { UserIdContext } from "../App";
+import { useSetRecoilState } from "recoil";
+import { userIdState } from "App";
+
+export const guestUserId = process.env.REACT_APP_SUPABASE_GUEST_USER_ID!;
 
 export const LogIn = () => {
   const navigate = useNavigate();
-  const { setUserId, userId } = useContext(UserIdContext);
-  const guestUserId = process.env.REACT_APP_SUPABASE_GUEST_USER_ID!;
+  const setUserId = useSetRecoilState(userIdState);
 
   const handleLogInButton = () => {
     navigate("/home");
     setUserId(guestUserId);
   };
-
-  useEffect(() => console.log(userId), [userId]);
 
   return (
     <div>

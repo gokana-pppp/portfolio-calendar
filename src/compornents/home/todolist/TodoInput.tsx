@@ -10,7 +10,8 @@ import styles from "./todolist.module.scss";
 import { Todo } from "../../../pages/Home";
 import { v4 as uuidv4 } from "uuid";
 import { addTodoToSupabase } from "lib/supabaseFunc";
-import { UserIdContext } from "App";
+import { userIdState } from "App";
+import { useRecoilValue } from "recoil";
 
 type Props = {
   text: string;
@@ -29,7 +30,7 @@ export const TodoInput = (props: Props) => {
   const { text, setText, todos, setTodos, radioCategory } = props;
   const uuid = uuidv4();
   const textRef = useRef<HTMLInputElement>(null!);
-  const { userId } = useContext(UserIdContext);
+  const userId = useRecoilValue(userIdState);
 
   const addTodo = (): void => {
     if (text === "") return;

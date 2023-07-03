@@ -1,25 +1,18 @@
-import React, {
-  useState,
-  createContext,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "pages/Home";
 import { LogIn } from "pages/LogIn";
+import { RecoilRoot, atom } from "recoil";
 
-export const UserIdContext = createContext(
-  {} as {
-    userId: string;
-    setUserId: Dispatch<SetStateAction<string>>;
-  }
-);
+export const userIdState = atom({
+  key: "userIdState",
+  default: "",
+});
 
 export const App: React.FC = () => {
-  const [userId, setUserId] = useState<string>("");
   return (
     <>
-      <UserIdContext.Provider value={{ userId, setUserId }}>
+      <RecoilRoot>
         <Routes>
           <Route path="/" element={<LogIn />} />
           <>
@@ -27,7 +20,7 @@ export const App: React.FC = () => {
             <Route path="*" element={<Home />} />
           </>
         </Routes>
-      </UserIdContext.Provider>
+      </RecoilRoot>
     </>
   );
 };

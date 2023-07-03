@@ -9,7 +9,8 @@ import styles from "./calendar.module.scss";
 import { Event } from "pages/Home";
 import { v4 as uuidv4 } from "uuid";
 import { addEventToSupabase } from "lib/supabaseFunc";
-import { UserIdContext } from "App";
+import { userIdState } from "App";
+import { useRecoilValue } from "recoil";
 
 type Props = {
   text: string;
@@ -46,7 +47,7 @@ export const EventInput = (props: Props) => {
     setText(() => e.target.value);
   };
 
-  const { userId } = useContext(UserIdContext);
+  const userId = useRecoilValue(userIdState);
 
   const uuid = uuidv4();
   const startDateAndTime = date + "T" + selectedHour + selectedMinute;
