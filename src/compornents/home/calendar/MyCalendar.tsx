@@ -25,12 +25,13 @@ export const MyCalendar = () => {
   const navigate = useNavigate();
   const { userId } = useContext(UserIdContext);
 
+  const getEvents = async () => {
+    const events = await getAllEvents(userId);
+    if (events === null) return;
+    setEvents(events);
+  };
+
   useEffect(() => {
-    const getEvents = async () => {
-      const events = await getAllEvents(userId);
-      if (events === null) return;
-      setEvents(events);
-    };
     getEvents();
   }, []);
 

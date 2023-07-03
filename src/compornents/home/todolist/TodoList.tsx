@@ -13,12 +13,13 @@ export const TodoList = () => {
   const [text, setText] = useState<string>("");
   const { userId } = useContext(UserIdContext);
 
+  const getTodos = async () => {
+    const todos = await getAllTodos(userId);
+    if (todos === null) return;
+    setTodos(todos);
+  };
+
   useEffect(() => {
-    const getTodos = async () => {
-      const todos = await getAllTodos(userId);
-      if (todos === null) return;
-      setTodos(todos);
-    };
     getTodos();
   }, []);
 
