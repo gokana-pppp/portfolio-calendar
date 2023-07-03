@@ -6,7 +6,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
 import { AddEventArea } from "./AddEventArea";
-import { DisplayedEvent, SelectedEvent } from "pages/Home";
+import { DisplayedEvent, SelectedEvent, Event } from "pages/Home";
 import styles from "./calendar.module.scss";
 import { PopUpWindow } from "./popup/PopUpWindow";
 import { getAllEvents } from "lib/supabaseFunc";
@@ -14,7 +14,7 @@ import { UserIdContext } from "App";
 
 export const MyCalendar = () => {
   const [date, setDate] = useState<string>("");
-  const [events, setEvents] = useState<any>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [selectedHour, setSelectedHour] = useState<string>("");
   const [selectedMinute, setSelectedMinute] = useState<string>("00");
   // カレンダー上のイベントをクリックしたらselectedEventに設定する
@@ -28,6 +28,7 @@ export const MyCalendar = () => {
   useEffect(() => {
     const getEvents = async () => {
       const events = await getAllEvents(userId);
+      if (events === null) return;
       setEvents(events);
     };
     getEvents();

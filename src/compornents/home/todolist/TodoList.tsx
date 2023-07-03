@@ -3,19 +3,20 @@ import styles from "./todolist.module.scss";
 import { RadioBtn } from "./RadioBtn";
 import { TodoInput } from "./TodoInput";
 import { List } from "./List";
-import { URGENT, MORNING, AFTERNOON } from "../../../pages/Home";
+import { URGENT, MORNING, AFTERNOON, Todo } from "../../../pages/Home";
 import { getAllTodos } from "lib/supabaseFunc";
 import { UserIdContext } from "App";
 
 export const TodoList = () => {
   const [radioCategory, setRadioCategory] = useState<string>("午前");
-  const [todos, setTodos] = useState<any>([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [text, setText] = useState<string>("");
   const { userId } = useContext(UserIdContext);
 
   useEffect(() => {
     const getTodos = async () => {
       const todos = await getAllTodos(userId);
+      if (todos === null) return;
       setTodos(todos);
     };
     getTodos();

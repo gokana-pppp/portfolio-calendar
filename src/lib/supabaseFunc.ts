@@ -3,7 +3,7 @@ import { Event, Todo } from "pages/Home";
 
 //Calendar
 /** supabaseからevents[]取ってくる */
-export const getAllEvents = async (id: string) => {
+export const getAllEvents = async (id: string): Promise<Event[] | null> => {
   const events = await supabaseCalendar
     .from("calendar")
     .select("*")
@@ -44,7 +44,7 @@ export const changeTitleInSupabase = async (
 
 // Todo
 /** supabaseからtodos[]取ってくる */
-export const getAllTodos = async (id: string) => {
+export const getAllTodos = async (id: string): Promise<Todo[] | null> => {
   const todos = await supabaseTodo
     .from("todo")
     .select("*")
