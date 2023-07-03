@@ -41,7 +41,7 @@ export const MyCalendar = () => {
   };
 
   /** カレンダーに表示するためにeventを変形する */
-  const displayedEvents: DisplayedEvent[] = events.map((event: any) => ({
+  const displayedEvents: DisplayedEvent[] = events.map((event) => ({
     title: event.title,
     start: event.start,
     end: event.end,
