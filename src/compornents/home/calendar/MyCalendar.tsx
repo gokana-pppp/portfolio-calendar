@@ -92,6 +92,7 @@ export const MyCalendar = () => {
             center: "title",
             end: "next",
           }}
+          businessHours={true} // 土日をグレーで表示
           eventTimeFormat={{ hour: "numeric", minute: "2-digit" }}
           eventClick={(e) => {
             openPopUpWindow();
