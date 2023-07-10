@@ -1,5 +1,5 @@
 import React, { ChangeEvent, Dispatch, SetStateAction } from "react";
-import styles from "./todolist.module.scss";
+import styles from "./radioBtn.module.scss";
 import { categories } from "../../../pages/Home";
 
 type Props = {
@@ -19,19 +19,14 @@ export const RadioBtn = (props: Props) => {
     <>
       {categories.map((category, index) => {
         return (
-          <div className={styles.radio_buttons}>
-            <div className={styles.radio_buttons} key={index}>
-              <input
-                type="radio"
-                value={category}
-                onChange={onChangeRadioBtn}
-                checked={category === radioCategory}
-                className={styles.r_input}
-              />
-              <label className={styles.r_label} htmlFor={category}>
-                {category}
-              </label>
-            </div>
+          <div className={styles.radio_buttons} key={index}>
+            <input
+              type="radio"
+              value={category}
+              onChange={onChangeRadioBtn}
+              checked={category === radioCategory}
+            />
+            <label htmlFor={category}>{category}</label>
           </div>
         );
       })}

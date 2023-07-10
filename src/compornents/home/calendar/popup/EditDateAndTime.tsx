@@ -93,7 +93,7 @@ export const EditDateAndTime = (props: Props) => {
   };
 
   return (
-    <div className={styles.edit_time_selected_event}>
+    <div>
       <div className={styles.edit_date}>
         <p>日付：</p>
         <input
@@ -104,44 +104,42 @@ export const EditDateAndTime = (props: Props) => {
           onChange={handleStartDate}
         ></input>
       </div>
-      <div className={styles.edit_date}>
+      <div className={styles.edit_time}>
         <p>時間：</p>
-        <select
-          className={styles.select}
-          value={editedHour}
-          onChange={handleSelectHour}
-        >
-          {editoptionsOfHour.map((hour) => {
-            return (
-              <option key={hour.value} value={hour.value}>
-                {hour.label}
-              </option>
-            );
-          })}
-        </select>
-        <p>時</p>
-        <select
-          className={styles.select}
-          value={editedMinute}
-          onChange={handleSelectMinute}
-        >
-          {optionsOfMinute.map((minute) => {
-            return (
-              <option key={minute.value} value={minute.value}>
-                {minute.label}
-              </option>
-            );
-          })}
-        </select>
-        <p>分</p>
-        <button
-          className={styles.date_and_time_select_button}
-          onClick={() => changeStartTime(targetEventId)}
-        >
-          決定
-        </button>
+        <label>
+          <select
+            className={styles.select_time}
+            value={editedHour}
+            onChange={handleSelectHour}
+          >
+            {editoptionsOfHour.map((hour) => {
+              return (
+                <option key={hour.value} value={hour.value}>
+                  {hour.label}
+                </option>
+              );
+            })}
+          </select>
+        </label>
+        <p className={styles.time_p}>時</p>
+        <label>
+          <select
+            className={styles.select_time}
+            value={editedMinute}
+            onChange={handleSelectMinute}
+          >
+            {optionsOfMinute.map((minute) => {
+              return (
+                <option key={minute.value} value={minute.value}>
+                  {minute.label}
+                </option>
+              );
+            })}
+          </select>
+        </label>
+        <p className={styles.time_p}>分</p>
+        <button onClick={() => changeStartTime(targetEventId)}>決定</button>
       </div>
-
       <div className={styles.select_button}></div>
     </div>
   );

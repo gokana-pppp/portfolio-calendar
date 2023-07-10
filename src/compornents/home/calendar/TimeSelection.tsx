@@ -46,40 +46,53 @@ export const TimeSelection = (props: Props) => {
   };
 
   return (
-    <div className={styles.time_select_zone}>
-      <select
-        className={styles.select_time}
-        value={selectedHour}
-        onChange={handleSelectHour}
-      >
-        {optionsOfHour.map((hour) => {
-          return (
-            <option key={hour.value} value={hour.value}>
-              {hour.label}
-            </option>
-          );
-        })}
-      </select>
+    <div className={styles.time_selection_area}>
+      <div>
+        <label>
+          <select
+            className={styles.select_time}
+            value={selectedHour}
+            onChange={handleSelectHour}
+          >
+            {optionsOfHour.map((hour) => {
+              return (
+                <option key={hour.value} value={hour.value}>
+                  {hour.label}
+                </option>
+              );
+            })}
+          </select>
+        </label>
+      </div>
+
       {selectedHour === "" ? (
         <></>
       ) : (
         // 時間が選択されていたら下記の要素はHTML上に表示される
         <>
-          <p className={styles.select_time_p}>時</p>
-          <select
-            className={styles.select_time}
-            value={selectedMinute}
-            onChange={handleSelectMinute}
-          >
-            {optionsOfMinute.map((minute) => {
-              return (
-                <option key={minute.value} value={minute.value}>
-                  {minute.label}
-                </option>
-              );
-            })}
-          </select>
-          <p className={styles.select_time_p}>分</p>
+          <div>
+            <p className={styles.select_time_p}>時</p>
+          </div>
+          <div>
+            <label>
+              <select
+                className={styles.select_time}
+                value={selectedMinute}
+                onChange={handleSelectMinute}
+              >
+                {optionsOfMinute.map((minute) => {
+                  return (
+                    <option key={minute.value} value={minute.value}>
+                      {minute.label}
+                    </option>
+                  );
+                })}
+              </select>
+            </label>
+          </div>
+          <div>
+            <p className={styles.select_time_p}>分</p>
+          </div>
         </>
       )}
     </div>

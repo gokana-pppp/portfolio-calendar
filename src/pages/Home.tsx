@@ -13,6 +13,7 @@ export type Event = {
   endTime: string;
   allDay: boolean;
   userId: string;
+  color: string;
 };
 
 // カレンダーに表示する時にEventを変形する

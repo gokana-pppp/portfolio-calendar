@@ -1,12 +1,7 @@
-import React, {
-  ChangeEvent,
-  useRef,
-  Dispatch,
-  SetStateAction,
-  useContext,
-} from "react";
-
-import styles from "./todolist.module.scss";
+import React, { ChangeEvent, useRef, Dispatch, SetStateAction } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import styles from "./todo.module.scss";
 import { Todo } from "../../../pages/Home";
 import { v4 as uuidv4 } from "uuid";
 import { addTodoToSupabase } from "lib/supabaseFunc";
@@ -52,16 +47,16 @@ export const TodoInput = (props: Props) => {
   };
 
   return (
-    <div className={styles.todo_input}>
+    <div className={styles.add_text}>
       <input
-        className={styles.i_input}
         type="text"
         value={text}
         ref={textRef}
         onChange={onChangeText}
+        placeholder=" カテゴリーを選んで新規作成"
       />
-      <button className={styles.i_button} onClick={() => addTodo()}>
-        追加
+      <button onClick={() => addTodo()}>
+        <FontAwesomeIcon icon={faPlus} />
       </button>
     </div>
   );

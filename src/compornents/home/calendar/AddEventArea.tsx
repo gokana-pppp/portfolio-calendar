@@ -33,27 +33,25 @@ export const AddEventArea = (props: Props) => {
   } = props;
 
   return (
-    <>
+    <div className={styles.add_event_area}>
       <DateSelection date={date} />
-      <div className={styles.event_input_area}>
-        <TimeSelection
-          selectedHour={selectedHour}
-          setSelectedHour={setSelectedHour}
-          selectedMinute={selectedMinute}
-          setSelectedMinute={setSelectedMinute}
-        />
-        <EventInput
-          text={text}
-          setText={setText}
-          date={date}
-          selectedHour={selectedHour}
-          setSelectedHour={setSelectedHour}
-          selectedMinute={selectedMinute}
-          setSelectedMinute={setSelectedMinute}
-          events={events}
-          setEvents={setEvents}
-        />
-      </div>
-    </>
+      <TimeSelection
+        selectedHour={selectedHour}
+        setSelectedHour={setSelectedHour}
+        selectedMinute={selectedMinute}
+        setSelectedMinute={setSelectedMinute}
+      />
+      <EventInput
+        text={text}
+        setText={setText}
+        date={date}
+        selectedHour={selectedHour}
+        setSelectedHour={setSelectedHour}
+        selectedMinute={selectedMinute}
+        setSelectedMinute={setSelectedMinute}
+        events={events}
+        setEvents={setEvents}
+      />
+    </div>
   );
 };

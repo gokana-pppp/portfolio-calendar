@@ -1,16 +1,12 @@
-import React, {
-  useRef,
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useContext,
-} from "react";
+import React, { useRef, ChangeEvent, Dispatch, SetStateAction } from "react";
 import styles from "./calendar.module.scss";
 import { Event } from "pages/Home";
 import { v4 as uuidv4 } from "uuid";
 import { addEventToSupabase } from "lib/supabaseFunc";
 import { userIdState } from "App";
 import { useRecoilValue } from "recoil";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   text: string;
@@ -68,6 +64,7 @@ export const EventInput = (props: Props) => {
         id: uuid,
         allDay: true,
         userId: userId,
+        color: "#778899",
       };
       setEvents([...events, newAllDayEvent]);
       addEventToSupabase(newAllDayEvent);
@@ -82,6 +79,7 @@ export const EventInput = (props: Props) => {
         id: uuid,
         allDay: false,
         userId: userId,
+        color: "#2c3e50",
       };
       setEvents([...events, newEvent]);
       addEventToSupabase(newEvent);
@@ -92,16 +90,17 @@ export const EventInput = (props: Props) => {
   };
 
   return (
-    <div>
+    <div className={styles.event_input_area}>
       <input
         className={styles.input}
         type="text"
         ref={textRef}
         onChange={onChangeText}
         value={text}
+        placeholder=" 新規イベント名入力"
       ></input>
       <button className={styles.button} onClick={() => addEvent()}>
-        追加
+        <FontAwesomeIcon icon={faPlus} />
       </button>
     </div>
   );

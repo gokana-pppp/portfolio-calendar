@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import styles from "./todolist.module.scss";
+import styles from "./todo.module.scss";
 import { Todo } from "pages/Home";
 import { changeRequestedStatusInSupabase } from "lib/supabaseFunc";
 
@@ -32,12 +32,16 @@ export const RequestBtn = (props: Props) => {
   };
 
   return (
-    <button
-      className={styles.ta_button}
-      disabled={isFinished}
-      onClick={() => handleRequestBtn()}
-    >
-      {BtnMessage}
-    </button>
+    <div className={styles.request}>
+      <button
+        disabled={isFinished}
+        className={`${
+          isFinished ? styles.finished_button : styles.request_button
+        } `}
+        onClick={() => handleRequestBtn()}
+      >
+        {BtnMessage}
+      </button>
+    </div>
   );
 };

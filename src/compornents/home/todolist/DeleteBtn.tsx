@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Todo } from "pages/Home";
-import styles from "./todolist.module.scss";
+import styles from "./todo.module.scss";
 import { deleteTodoFromSupabase } from "lib/supabaseFunc";
 
 type Props = {
@@ -17,7 +17,7 @@ export const DeleteBtn = (props: Props) => {
     deleteTodoFromSupabase(targetTodoId);
   };
   return (
-    <button className={styles.ta_button} onClick={() => deleteTodo()}>
+    <button className={styles.delete_button} onClick={() => deleteTodo()}>
       削除
     </button>
   );
