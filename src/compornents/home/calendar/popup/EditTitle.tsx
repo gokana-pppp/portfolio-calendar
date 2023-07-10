@@ -55,7 +55,7 @@ export const EditTitle = (props: Props) => {
 
   return (
     <div className={styles.edit_title}>
-      <label>タイトル：</label>
+      <p>タイトル：</p>
       <input
         type="text"
         value={editedText}

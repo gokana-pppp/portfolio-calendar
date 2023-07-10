@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState, Dispatch, SetStateAction } from "react";
 import { URGENT, Todo, categories } from "./../../../pages/Home";
-import styles from "./todolist.module.scss";
+import styles from "./select.module.scss";
 import { changeCategoryInSupabase } from "lib/supabaseFunc";
 
 type Props = {
@@ -40,25 +40,26 @@ export const PulldownMenu = (props: Props) => {
   };
 
   return (
-    <>
-      <select
-        key={category}
-        disabled={isFinished}
-        value={selectedCategory}
-        onChange={handleSelect}
-        className={styles.select_menu}
-      >
-        {categories.map((category) => {
-          return <option key={category}>{category}</option>;
-        })}
-      </select>
+    <div className={styles.select_area}>
+      <label>
+        <select
+          key={category}
+          disabled={isFinished}
+          value={selectedCategory}
+          onChange={handleSelect}
+        >
+          {categories.map((category) => {
+            return <option key={category}>{category}</option>;
+          })}
+        </select>
+      </label>
       <button
-        className={styles.move_button}
-        onClick={() => changeCategoly()}
         disabled={isFinished}
+        className={`${isFinished ? styles.finished_button : ""} `}
+        onClick={() => changeCategoly()}
       >
         へ移動
       </button>
-    </>
+    </div>
   );
 };

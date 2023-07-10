@@ -1,0 +1,61 @@
+.title {
+  display: flex;
+  margin-top: 3px;
+  margin-left: 5px;
+  flex-wrap: wrap;
+  border: none;
+  width: 170px;
+}
+
+.title label {
+  display: flex;
+  align-items: center;
+  gap: 0 0.5em;
+  position: relative;
+  cursor: pointer;
+  font-size: 12px;
+  color: #404040;
+}
+.finished_label {
+  display: flex;
+  align-items: center;
+  gap: 0 0.5em;
+  position: relative;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: line-through;
+}
+
+.title label::before,
+.title label:has(:checked)::after {
+  margin-top: 0;
+  content: "";
+}
+
+.title label::before {
+  margin-top: 0;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: white;
+  border: solid 0.5px #c0c0c0;
+}
+
+.title label:has(:checked)::before {
+  background-color: #e0e0e0;
+}
+
+.title label:has(:checked)::after {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  transform: rotate(45deg);
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+}
+
+.checkbox {
+  display: none;
+}

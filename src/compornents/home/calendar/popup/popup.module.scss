@@ -13,10 +13,14 @@
 
 .modal_container {
   width: 20%;
-  height: 45%;
+  height: 40%;
   padding: 1em;
-  background-color: white;
   text-align: center;
+  background-color: #fbfbfb;
+  margin: 5px 10px 5px 5px;
+
+  overflow: hidden;
+  border-radius: 4px;
 }
 
 .modal_content {
@@ -31,47 +35,83 @@
   text-align: right;
 }
 
-.edit_area {
-  float: left;
-  .input_area {
-    margin-top: 15px;
-  }
-  .button {
-    margin-top: 30px;
-  }
-}
-
 .edit_date {
   display: flex;
-  .input {
-    height: 20px;
-    width: 30px;
-    margin-top: 15px;
-  }
-  .date_input {
-    height: 20px;
-    width: 120px;
-    margin-top: 15px;
-  }
-  .date_select_button {
-    height: 25px;
-    margin-top: 15px;
-    margin-left: 10px;
-  }
-  .date_and_time_select_button {
-    height: 25px;
-    margin-left: 77px;
-    margin-top: 15px;
-  }
-  .select {
-    height: 25px;
-    margin-top: 18px;
-    width: 40px;
-  }
+  height: 30px;
+}
+.edit_date input {
+  height: 20px;
+  width: 120px;
+  margin-top: 10px;
+  font-size: 12px;
+  border: solid 0.5px #c0c0c0;
+  border-radius: 2px;
+  color: #404040;
+}
+.edit_date button {
+  margin-top: 8px;
+  margin-left: 10px;
 }
 
 .edit_title {
-  .title_select_button {
-    margin-left: 10px;
-  }
+  display: flex;
+}
+
+.edit_time {
+  display: flex;
+  height: 30px;
+}
+
+.edit_time label {
+  display: inline-flex;
+  align-items: center;
+  color: #404040;
+  font-size: 12px;
+}
+
+.edit_time label::after {
+  position: absolute;
+  right: 15px;
+  width: 10px;
+  height: 7%;
+  background-color: #535353;
+  pointer-events: none;
+}
+
+.edit_time button {
+  margin-top: 7px;
+}
+
+.time_p {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.select_time {
+  font-size: 12px;
+  margin-left: 0;
+  margin-top: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #333333;
+  font-size: 12px;
+  cursor: pointer;
+  width: 35px;
+  height: 21px;
+}
+
+.edit_title input {
+  margin-top: 8px;
+  height: 13px;
+  font-size: 12px;
+  border: solid 0.5px #c0c0c0;
+  border-radius: 2px;
+  height: 20px;
+  width: 120px;
+  color: #404040;
+}
+.edit_title button {
+  margin-top: 8px;
+  margin-left: 10px;
 }

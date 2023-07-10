@@ -105,37 +105,26 @@ export const EditDate = (props: Props) => {
   };
 
   return (
-    <div>
-      <div>
-        <div>
-          <div className={styles.edit_date}>
-            <p>開始日：</p>
-            <input
-              type="date"
-              value={editedStartDate}
-              className={styles.date_input}
-              ref={editedStartDateRef}
-              onChange={handleStartDate}
-            ></input>
-          </div>
-          <div className={styles.edit_date}>
-            <p>終了日：</p>
-            <input
-              type="date"
-              value={editedEndDate}
-              className={styles.date_input}
-              ref={editedEndDateRef}
-              onChange={handleEndDate}
-            ></input>
-            <button
-              className={styles.date_select_button}
-              onClick={() => handleSelectButton()}
-            >
-              決定
-            </button>
-          </div>
-        </div>
+    <>
+      <div className={styles.edit_date}>
+        <p>開始日：</p>
+        <input
+          type="date"
+          value={editedStartDate}
+          ref={editedStartDateRef}
+          onChange={handleStartDate}
+        ></input>
       </div>
-    </div>
+      <div className={styles.edit_date}>
+        <p>終了日：</p>
+        <input
+          type="date"
+          value={editedEndDate}
+          ref={editedEndDateRef}
+          onChange={handleEndDate}
+        ></input>
+        <button onClick={() => handleSelectButton()}>決定</button>
+      </div>
+    </>
   );
 };
