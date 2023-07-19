@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./calendar.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 
 type Props = {
   date: string;
@@ -16,11 +14,7 @@ export const DateSelection = (props: Props) => {
   if (date === "")
     return (
       <div className={styles.date_selection_area}>
-        <p>
-          {" "}
-          <FontAwesomeIcon icon={faCalendar} />{" "}
-          カレンダーの日付をクリックしてください
-        </p>
+        <p>カレンダーの日付をクリックしてください</p>
       </div>
     );
 
@@ -32,7 +26,6 @@ export const DateSelection = (props: Props) => {
     <div className={styles.date_selection_area}>
       <p className={styles.p}>
         {" "}
-        <FontAwesomeIcon icon={faCalendar} />{" "}
         {`イベント作成する日付：${SelectedMonth}月${SelectedDate}日`}
       </p>
     </div>

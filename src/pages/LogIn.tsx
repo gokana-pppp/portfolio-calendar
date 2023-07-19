@@ -19,7 +19,7 @@ export const LogIn = () => {
   return (
     <div className={styles.login_page}>
       <div className={styles.login}>
-        <h1>ログインページ</h1>
+        <h1>Portfolio Calendar & Todo List</h1>
         <button onClick={() => handleLogInButton()}>ゲストログイン</button>
       </div>
     </div>

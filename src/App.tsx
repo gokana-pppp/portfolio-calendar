@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "pages/Home";
 import { LogIn } from "pages/LogIn";
 import { RecoilRoot, atom } from "recoil";
+import { HowToUse } from "pages/HowToUse";
 
 export const userIdState = atom({
   key: "userIdState",
@@ -17,6 +18,7 @@ export const App: React.FC = () => {
           <Route path="/" element={<LogIn />} />
           <>
             <Route path="/home" element={<Home />} />
+            <Route path="/howto" element={<HowToUse />} />
             <Route path="*" element={<Home />} />
           </>
         </Routes>

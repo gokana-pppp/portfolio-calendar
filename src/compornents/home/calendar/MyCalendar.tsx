@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
 import styled from "@emotion/styled";
 
 import FullCalendar from "@fullcalendar/react";
@@ -16,7 +15,16 @@ import { userIdState } from "App";
 import { useRecoilState } from "recoil";
 import { guestUserId } from "../../../pages/LogIn";
 
-export const MyCalendar = () => {
+import { useMedia } from "use-media";
+import { SpAddEventArea } from "./SpAddEventArea";
+
+type Props = {
+  openSpAdd: boolean;
+  setOpenSpAdd: Dispatch<SetStateAction<boolean>>;
+};
+
+export const MyCalendar = (props: Props) => {
+  const { openSpAdd, setOpenSpAdd } = props;
   const [date, setDate] = useState<string>("");
   const [events, setEvents] = useState<Event[]>([]);
   const [selectedHour, setSelectedHour] = useState<string>("");
@@ -26,6 +34,10 @@ export const MyCalendar = () => {
   // ポップアップウィンドウを表示するかしないかの管理
   const [displayPopUp, setDisplayPopUp] = useState<boolean>(false);
 
+  const PcAndTabletSize = useMedia({ minWidth: "760px" });
+  const SmartPhoneSize = useMedia({ maxWidth: "759px" });
+
+  /** FullCalendarのスタイル */
   const StyleWrapper = styled.div`
     .fc .fc-toolbar.fc-header-toolbar {
       margin-bottom: 3px;
@@ -66,7 +78,6 @@ export const MyCalendar = () => {
     }
   `;
 
-  const navigate = useNavigate();
   const [userId, setUserId] = useRecoilState(userIdState);
 
   setUserId(guestUserId);
@@ -107,11 +118,6 @@ export const MyCalendar = () => {
 
   const handleEventClick = (event: SelectedEvent[]) => {
     setSelectedEvent(event);
-  };
-
-  const handleLogOutButton = () => {
-    navigate("/");
-    setUserId("");
   };
 
   return (
@@ -161,24 +167,36 @@ export const MyCalendar = () => {
           </div>
         </div>
       </StyleWrapper>
-      <div className={styles.lower_wrapper}>
-        <div className={styles.logOutButton}>
-          <button className={styles.b} onClick={() => handleLogOutButton()}>
-            ログアウト
-          </button>
+      {PcAndTabletSize && (
+        <div className={styles.lower_wrapper}>
+          <div className={styles.logOutButton}></div>
+          <div className={styles.input_text_area}>
+            <AddEventArea
+              date={date}
+              events={events}
+              setEvents={setEvents}
+              selectedHour={selectedHour}
+              setSelectedHour={setSelectedHour}
+              selectedMinute={selectedMinute}
+              setSelectedMinute={setSelectedMinute}
+            />
+          </div>
         </div>
-        <div className={styles.input_text_area}>
-          <AddEventArea
-            date={date}
-            events={events}
-            setEvents={setEvents}
-            selectedHour={selectedHour}
-            setSelectedHour={setSelectedHour}
-            selectedMinute={selectedMinute}
-            setSelectedMinute={setSelectedMinute}
-          />
-        </div>
-      </div>
+      )}
+      {SmartPhoneSize && (
+        <SpAddEventArea
+          openSpAdd={openSpAdd}
+          setOpenSpAdd={setOpenSpAdd}
+          date={date}
+          setDate={setDate}
+          events={events}
+          setEvents={setEvents}
+          selectedHour={selectedHour}
+          setSelectedHour={setSelectedHour}
+          selectedMinute={selectedMinute}
+          setSelectedMinute={setSelectedMinute}
+        />
+      )}
     </>
   );
 };

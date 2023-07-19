@@ -1,14 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200&display=swap");
+
+* {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
 .container {
   display: flex;
   box-sizing: border-box;
 }
 
 .calendar {
-  height: 65%;
+  height: 50%;
   width: 80%;
+  @media screen and (max-width: 760px) {
+    width: 100%;
+  }
 }
 
 .todo_list {
+  margin-top: 5px;
   margin-left: 10px;
   margin-right: auto;
 }

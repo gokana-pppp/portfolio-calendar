@@ -5,6 +5,9 @@
   flex-wrap: wrap;
   border: none;
   width: 170px;
+  @media screen and (max-width: 760px) {
+    width: 100px;
+  }
 }
 
 .title label {
@@ -15,6 +18,9 @@
   cursor: pointer;
   font-size: 12px;
   color: #404040;
+  @media screen and (max-width: 760px) {
+    font-size: 10px;
+  }
 }
 .finished_label {
   display: flex;

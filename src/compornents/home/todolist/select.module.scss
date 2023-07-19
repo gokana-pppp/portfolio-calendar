@@ -5,7 +5,7 @@
   display: inline-flex;
   align-items: center;
   color: #404040;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .select_area label::after {
@@ -19,12 +19,15 @@
 }
 .select_area label select {
   padding: 0.4em calc(0.8em + 30px) 0.4em 0.8em;
-  border: 1px solid #cccccc;
-  border-radius: 3px;
+  border: solid 0.5px #c0c0c0;
+  border-radius: 2px;
   background-color: #fff;
   color: #333333;
-  font-size: 12px;
+  font-size: 10px;
   cursor: pointer;
+  @media screen and (max-width: 760px) {
+    font-size: 10px;
+  }
 }
 .finished_button {
   padding-left: 10px;

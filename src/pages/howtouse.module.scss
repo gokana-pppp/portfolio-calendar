@@ -1,0 +1,119 @@
+.title {
+  display: flex;
+}
+
+.back_button {
+  margin-top: 25px;
+  margin-left: 20px;
+}
+
+.containers {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.container {
+  flex-basis: 50%;
+  flex: auto;
+  display: flex;
+  border: solid 0.5px #c0c0c0;
+  background-color: #fefefe;
+  height: 270px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 3px 0 10px 10px;
+  @media screen and (max-width: 760px) {
+    display: block;
+    height: 400px;
+  }
+}
+.container_3 {
+  flex-basis: 50%;
+  flex: auto;
+  display: flex;
+  border: solid 0.5px #c0c0c0;
+  background-color: #fefefe;
+  height: 270px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 3px 0 10px 10px;
+  @media screen and (max-width: 760px) {
+    display: block;
+    height: 780px;
+  }
+}
+
+.container_4 {
+  flex-basis: 50%;
+  flex: auto;
+  display: flex;
+  border: solid 0.5px #c0c0c0;
+  background-color: #fefefe;
+  height: 270px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 3px 0 10px 10px;
+  @media screen and (max-width: 760px) {
+    display: block;
+    height: 700px;
+  }
+}
+.container_todo {
+  flex-basis: 50%;
+  flex: auto;
+  display: flex;
+  border: solid 0.5px #c0c0c0;
+  background-color: #fefefe;
+  height: 270px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 3px 0 10px 10px;
+  @media screen and (max-width: 760px) {
+    display: block;
+    height: 300px;
+  }
+}
+
+.subtitle {
+  font-weight: bolder;
+  margin-left: 0;
+  text-decoration: underline;
+}
+
+.image {
+  width: 300px;
+  @media screen and (max-width: 760px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.img1 {
+  width: 300px;
+  height: 95%;
+}
+
+.img2 {
+  width: 300px;
+  height: 100%;
+}
+.img3 {
+  width: 340px;
+  height: 100%;
+}
+.img5 {
+  width: 300px;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+.img6 {
+  width: 300px;
+  margin-top: 50px;
+}
+.text {
+  width: 300px;
+  margin-left: 20px;
+}

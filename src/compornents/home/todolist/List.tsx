@@ -22,7 +22,7 @@ export const List = (props: Props) => {
 
   return (
     <div className={className}>
-      <div>
+      <div className={styles.subtitle}>
         <p className={styles.p}>{category}</p>
       </div>
       {getTodos(category).map((todo) => {

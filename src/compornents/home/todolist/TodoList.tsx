@@ -30,7 +30,7 @@ export const TodoList = () => {
     <div className={styles.todo_list}>
       <div className={styles.title}>
         <h1>
-          <FontAwesomeIcon icon={faList} /> Todoリスト
+          <FontAwesomeIcon icon={faList} /> Todo List
         </h1>
       </div>
       <div className={styles.add_space}>

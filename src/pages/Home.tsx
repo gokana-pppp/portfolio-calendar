@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { MyCalendar } from "compornents/home/calendar/MyCalendar";
 import { TodoList } from "compornents/home/todolist/TodoList";
+import { Header } from "compornents/home/header/Header";
 import styles from "./home.module.scss";
+
+import { useMedia } from "use-media";
+import { SpTodoList } from "compornents/home/todolist/SpTodoList";
 
 // Eventの型変更
 export type Event = {
@@ -61,14 +65,29 @@ export const WANT_TO_REQUEST = "依頼する";
 export const categories = [URGENT, MORNING, AFTERNOON];
 
 export const Home = () => {
+  const [openSpAdd, setOpenSpAdd] = useState<boolean>(false);
+  const [openSpTodo, setOpenSpTodo] = useState<boolean>(false);
+  // const PcSize = useMedia({ minWidth: "1000px" });
+  // const TabletSize = useMedia({ minWidth: "760px", maxWidth: "999px" });
+  const SmartPhoneSize = useMedia({ maxWidth: "759px" });
+
   return (
-    <div className={styles.container}>
-      <div className={styles.calendar}>
-        <MyCalendar />
+    <>
+      <header>
+        <Header setOpenSpAdd={setOpenSpAdd} setOpenSpTodo={setOpenSpTodo} />
+      </header>
+      <div className={styles.container}>
+        <div className={styles.calendar}>
+          <MyCalendar openSpAdd={openSpAdd} setOpenSpAdd={setOpenSpAdd} />
+        </div>
+        {SmartPhoneSize ? (
+          <SpTodoList openSpTodo={openSpTodo} setOpenSpTodo={setOpenSpTodo} />
+        ) : (
+          <div className={styles.todo_list}>
+            <TodoList />
+          </div>
+        )}
       </div>
-      <div className={styles.todo_list}>
-        <TodoList />
-      </div>
-    </div>
+    </>
   );
 };
