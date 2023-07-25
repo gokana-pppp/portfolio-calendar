@@ -97,7 +97,7 @@ export const HowToUse = () => {
             </div>
             <div className={styles.text}>
               <p className={styles.subtitle}>イベント削除</p>
-              <p>1.カレンダー上の日付をクリック</p>
+              <p>1.カレンダー上のイベントをクリック</p>
               <p>2.削除ボタンをクリック</p>
             </div>
           </div>
