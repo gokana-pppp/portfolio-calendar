@@ -28,7 +28,7 @@ URL:[Portfolio Calendar & Todo List](https://portfolio-calendar-9cb59.web.app/)
 プルダウンで移動したいカテゴリーを選んで、移動ボタンを押す。  
 ④Todo を削除できる。
 
-##　 使用技術
+## 使用技術
 
 ・React 18.2.0  
 ・TypeScript 4.9.5  
